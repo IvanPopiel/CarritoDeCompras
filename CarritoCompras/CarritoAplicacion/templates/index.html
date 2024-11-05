@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <!-- Vinculamos el archivo de estilos CSS -->
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <!-- Header con título centralizado -->
+    <header class="header">
+        <h1>Bienvenidos a la Tienda</h1>
+    </header>
+    
+    <!-- Contenedor de productos -->
+    <div class="productos-container">
+        <!-- Recorremos los productos y generamos una card por cada uno -->
+        {% for producto in productos %}
+            <div class="card">
+                <!-- Imagen del producto 
+                <div class="card-img-container">
+                    <img src="{% static 'images/producto_imagen.jpg' %}" alt="Imagen de {{ producto.nombre }}" class="card-img">
+                </div>
+                -->
+                <div class="card-body">
+                    <h2 class="card-title">{{ producto.nombre }}</h2>
+                    <p class="card-description">{{ producto.descripcion }}</p>
+                    <span class="card-price">${{ producto.precio }}</span>
+                    <span class="card-stock">Stock: {{ producto.stock }}</span>
+                    <a href="{% url 'Agregar' producto.id %}" class="btn-comprar">Agregar al carrito</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% include "ventanaModal.html" %}
+    </div>
+</body>
+</html>

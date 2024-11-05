@@ -1,0 +1,42 @@
+<div>
+    <thead>
+        <tr>
+            <th colspan="3" class="carrito-header">Carrito</th>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <table class="carrito-table">
+        <tbody>
+            {% if request.session.carrito.items %}
+            {% for key, value in request.session.carrito.items %}
+                <tr>
+                    <td>{{ value.nombre }}</td>
+                    <td>${{ value.precio }}</td>
+                    <td>{{ value.precioFinal }}
+                        <a href="{% url 'Agregar' value.productoId %}">+</a>
+                        <a href="{% url 'Restar' value.productoId %}">-</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">Sin productos</td>
+            </tr>
+            {% endif %}
+            <tr class="total-row">
+                <th>Total: </th>
+                <td colspan="2">$ {{ ordenCompra }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+</div>
+
+<div class="carrito-actions">
+    <div><a href="{% url 'Limpiar' %}" class="btn-limpiar">Limpiar</a></div>
+    <div><a href="#" class="btn-finalizar">Finalizar</a></div>
+</div>
