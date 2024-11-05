@@ -5,63 +5,65 @@
     box-sizing: border-box;
 }
 
+/* Fondo general */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 /* Header */
 .header {
-    text-align: center;
-    padding: 20px 0;
     background-color: #007bff;
     color: white;
-    z-index: 1000;
+    text-align: center;
+    padding: 20px;
 }
 
-.header h1 {
+.header-title {
     font-size: 2.5em;
     font-weight: bold;
 }
 
-/* Contenedor principal que contiene los productos y carrito */
-.main-container {
+/* Contenedor principal de productos */
+.container-main {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    flex-grow: 1;
-    gap: 30px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
 }
 
 /* Contenedor de productos */
 .productos-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Diseño responsivo con múltiples columnas */
+    display: flex;
+    /*flex-wrap: wrap;
     gap: 20px;
-    flex: 0 0 70%; /* El contenedor de productos ocupa el 70% del ancho */
+    justify-content: flex-start;
+    */
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    
 }
 
-/* Estilo de cada card */
+/* Card de productos */
 .card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    background-color: white;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin: 30px 0;
+    padding: 30px 0;
 }
 
 .card:hover {
     transform: scale(1.05);
 }
 
-/* Imagen del producto */
 .card-img-container {
     width: 100%;
     height: 200px;
@@ -74,7 +76,6 @@ body {
     object-fit: cover;
 }
 
-/* Cuerpo de la card */
 .card-body {
     padding: 15px;
     display: flex;
@@ -104,76 +105,42 @@ body {
     color: #777;
 }
 
-.btn-comprar {
+.btn-agregar {
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
     text-align: center;
-    text-decoration: none;
     border-radius: 5px;
+    text-decoration: none;
     transition: background-color 0.3s;
 }
 
-.btn-comprar:hover {
+.btn-agregar:hover {
     background-color: #0056b3;
 }
 
-/* Contenedor del carrito (botón y ventana) */
-.carrito-container {
-    flex: 0 0 30%; /* El contenedor del carrito ocupa el 30% */
-    position: relative;
-}
 
-/* Estilos para el botón flotante de carrito */
-.carrito-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #28a745;
-    color: white;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+
+/* Contenido del modal */
+.modal-container{
+    
+    width: 40%;
     z-index: 1000;
-}
-
-.carrito-btn:hover {
-    background-color: #218838;
-}
-
-/* Estilos para la ventana modal */
-
-/* Fondo del modal */
-.modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    display: none; /* Inicialmente oculto */
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+    top: 200px
+    
+    
 }
-
-/* Contenedor del carrito en el modal */
 .modal-content {
-    background-color: #fff;
+    
     border-radius: 8px;
-    max-width: 500px;
-    width: 100%;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow-y: auto;
+    width: 40vw;
+    background-color: gray;
+    
+    
 }
 
 /* Título del modal */
@@ -191,32 +158,37 @@ body {
     color: #333;
 }
 
-.modal-header .close {
-    font-size: 24px;
+.modal-header .close-btn {
+    font-size: 30px;
     color: #333;
     cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-header .close-btn:hover {
+    color: #dc3545; /* Color rojo para el hover */
 }
 
 /* Tabla de productos en el carrito */
-table {
+.carrito-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-th, td {
+.carrito-table th, .carrito-table td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-th {
+.carrito-table th {
     background-color: #f4f4f4;
     font-weight: bold;
     color: #333;
 }
 
-td {
+.carrito-table td {
     font-size: 16px;
 }
 
@@ -231,44 +203,19 @@ a:hover {
 }
 
 /* Total del carrito */
-th, td {
+.total-row {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.total-carrito {
     font-size: 18px;
     font-weight: normal;
     color: #333;
 }
 
-th {
-    font-weight: bold;
-}
-
-.total-row {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* Botones */
-button, a {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-button:hover, a:hover {
-    background-color: #218838;
-}
-
-hr {
-    margin: 20px 0;
-    border: 1px solid #ddd;
-}
-
-/* Limpiar y finalizar */
+/* Botones del modal */
 .modal-footer {
     display: flex;
     justify-content: space-between;
@@ -276,78 +223,31 @@ hr {
 }
 
 .modal-footer a {
-    background-color: #dc3545;
     padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 .modal-footer a:hover {
+    background-color: #218838;
+}
+
+.btn-limpiar {
+    background-color: #dc3545;
+}
+
+.btn-limpiar:hover {
     background-color: #c82333;
+}
+
+/* Estilos adicionales */
+.close-btn {
+    cursor: pointer;
+    font-size: 30px;
 }
 
 /* Media Queries para hacer el diseño responsive */
 
-/* Para dispositivos móviles (pantallas pequeñas) */
-@media (max-width: 600px) {
-    .header h1 {
-        font-size: 2em;
-    }
-
-    .main-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .productos-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .carrito-container {
-        flex: 0 0 100%;
-        margin-top: 20px; /* Espacio superior cuando el carrito es visible debajo */
-    }
-
-    /* Estilos del modal en pantallas pequeñas */
-    .modal-content {
-        width: 90%;
-        padding: 15px;
-    }
-
-    th, td {
-        font-size: 14px;
-    }
-}
-
-/* Para tabletas (pantallas medianas) */
-@media (min-width: 601px) and (max-width: 900px) {
-    .productos-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-    }
-
-    .carrito-container {
-        flex: 0 0 100%;
-    }
-
-    .modal-content {
-        width: 80%;
-        padding: 18px;
-    }
-}
-
-/* Para escritorios y pantallas grandes */
-@media (min-width: 901px) {
-    .productos-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-    }
-
-    .carrito-container {
-        flex: 0 0 30%;
-    }
-
-    .modal-content {
-        width: 50%;
-        padding: 20px;
-    }
-}

@@ -11,31 +11,36 @@
 <body>
     <!-- Header con título centralizado -->
     <header class="header">
-        <h1>Bienvenidos a la Tienda</h1>
+        <h1 class="header-title">Bienvenidos a la Tienda</h1>
+        <!-- Botón para abrir el modal -->
+        <button id="abrirModalBtn" class="btn-abrir-modal">Ver carrito</button>
     </header>
     
-    <!-- Contenedor de productos -->
-    <div class="productos-container">
-        <!-- Recorremos los productos y generamos una card por cada uno -->
-        {% for producto in productos %}
-            <div class="card">
-                <!-- Imagen del producto 
-                <div class="card-img-container">
-                    <img src="{% static 'images/producto_imagen.jpg' %}" alt="Imagen de {{ producto.nombre }}" class="card-img">
+    <div class="container-main">
+        <!-- Contenedor de productos -->
+        <div class="productos-container">
+            <!-- Recorremos los productos y generamos una card por cada uno -->
+            {% for producto in productos %}
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ producto.nombre }}</h2>
+                        <p class="card-description">{{ producto.descripcion }}</p>
+                        <span class="card-price">${{ producto.precio }}</span>
+                        <span class="card-stock">Stock: {{ producto.stock }}</span>
+                        <!-- El botón de agregar al carrito no debe abrir el modal -->
+                        <button class="btn-agregar"><a href="{% url 'Agregar' producto.id %}" class="link-agregar">Agregar al carrito</a></button>
+                    </div>
                 </div>
-                -->
-                <div class="card-body">
-                    <h2 class="card-title">{{ producto.nombre }}</h2>
-                    <p class="card-description">{{ producto.descripcion }}</p>
-                    <span class="card-price">${{ producto.precio }}</span>
-                    <span class="card-stock">Stock: {{ producto.stock }}</span>
-                    <a href="{% url 'Agregar' producto.id %}" class="btn-comprar">Agregar al carrito</a>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+
+        <!-- Ventana modal (oculta por defecto) -->
+        <div class="modal-container" id="modalCarrito" style="display: none;">
+            {% include "ventanaModal.html" %}
+        </div>
     </div>
-    <div>
-        {% include "ventanaModal.html" %}
-    </div>
+
+    <!-- Vinculamos el archivo JS -->
+    <script src="{% static 'js/main.js' %}" defer></script>
 </body>
 </html>

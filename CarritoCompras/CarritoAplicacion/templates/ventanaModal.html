@@ -1,42 +1,53 @@
-<div>
-    <thead>
-        <tr>
-            <th colspan="3" class="carrito-header">Carrito</th>
-        </tr>
-        <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-        </tr>
-    </thead>
-    <table class="carrito-table">
-        <tbody>
-            {% if request.session.carrito.items %}
-            {% for key, value in request.session.carrito.items %}
+<!-- Ventana modal -->
+<div" id="modalCarrito">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Carrito</h2>
+            <!-- Botón de cierre con el id "cerrarModalBtn" -->
+            <span id="cerrarModalBtn" class="close-btn">&times;</span>
+        </div>
+        
+        <table class="carrito-table">
+            <thead>
                 <tr>
-                    <td>{{ value.nombre }}</td>
-                    <td>${{ value.precio }}</td>
-                    <td>{{ value.precioFinal }}
-                        <a href="{% url 'Agregar' value.productoId %}">+</a>
-                        <a href="{% url 'Restar' value.productoId %}">-</a>
-                    </td>
+                    <th class="carrito-header" colspan="3">Carrito</th>
                 </tr>
-            {% endfor %}
-            {% else %}
-            <tr>
-                <td colspan="3">Sin productos</td>
-            </tr>
-            {% endif %}
-            <tr class="total-row">
-                <th>Total: </th>
-                <td colspan="2">$ {{ ordenCompra }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <hr>
-</div>
-
-<div class="carrito-actions">
-    <div><a href="{% url 'Limpiar' %}" class="btn-limpiar">Limpiar</a></div>
-    <div><a href="#" class="btn-finalizar">Finalizar</a></div>
+                <tr>
+                    <th class="table-header">Nombre</th>
+                    <th class="table-header">Precio</th>
+                    <th class="table-header">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if request.session.carrito.items %}
+                    {% for key, value in request.session.carrito.items %}
+                        <tr class="carrito-item">
+                            <td class="producto-nombre">{{ value.nombre }}</td>
+                            <td class="producto-precio">${{ value.precio }}</td>
+                            <td class="producto-cantidad">
+                                {{ value.precioFinal }}
+                                <a href="{% url 'Agregar' value.productoId %}" class="accion-carrito">+</a>
+                                <a href="{% url 'Restar' value.productoId %}" class="accion-carrito">-</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="sin-productos">Sin productos</td>
+                    </tr>
+                {% endif %}
+                
+                <tr class="total-row">
+                    <th class="total-label">Total: </th>
+                    <td colspan="2" class="total-carrito">$ {{ ordenCompra }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+        <div class="modal-footer">
+            <a href="{% url 'Limpiar' %}" class="btn-limpiar">Limpiar</a>
+            <a href="#" class="btn-finalizar">Finalizar</a>
+        </div>
+    </div>
 </div>
