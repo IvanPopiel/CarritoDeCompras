@@ -1,3 +1,7 @@
+# Proyecto Carrito de Compras
+
+[JIRA del proyecto](https://ezequiel-grisoski.atlassian.net/jira/software/projects/CAC/boards/3)
+
 
 ## Diagrama Entidad-Relación (DER)
 
