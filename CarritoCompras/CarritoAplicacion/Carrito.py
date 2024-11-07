@@ -31,6 +31,7 @@ class Carrito:
             self.carrito[id]["stock"] += 1
             self.carrito[id]["precioFinal"] += producto.precio
         self.guardarCarrito()
+        
     def guardarCarrito(self):
         self.session["carrito"] = self.carrito
         self.session.modified = True

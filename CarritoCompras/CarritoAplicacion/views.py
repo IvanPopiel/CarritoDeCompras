@@ -20,7 +20,7 @@ def eliminarProducto(request, productoId):
     carrito.eliminarProducto(producto)
     return redirect("Index")
 
-def restarProducto(request, productoId): 
+def restarProducto(request, productoId):
     carrito = Carrito(request)
     producto = Producto.objects.get(id=productoId)
     carrito.restar(producto)

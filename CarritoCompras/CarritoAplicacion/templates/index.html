@@ -13,7 +13,11 @@
     <header class="header">
         <h1 class="header-title">Bienvenidos a la Tienda</h1>
         <!-- Botón para abrir el modal -->
-        <button id="abrirModalBtn" class="btn-abrir-modal">Ver carrito</button>
+        <div class="container-icono-carrito">
+            <img src="../static/img/shopping-trolley_4883608.png" alt="carrito" id="abrirModalBtn" class="btn-abrir-modal">
+        </div>
+        
+    
     </header>
     
     <div class="container-main">
@@ -28,7 +32,7 @@
                         <span class="card-price">${{ producto.precio }}</span>
                         <span class="card-stock">Stock: {{ producto.stock }}</span>
                         <!-- El botón de agregar al carrito no debe abrir el modal -->
-                        <button class="btn-agregar"><a href="{% url 'Agregar' producto.id %}" class="link-agregar">Agregar al carrito</a></button>
+                        <a href="{% url 'Agregar' producto.id %}" class="link-agregar"> <button class="btn-agregar">Añadir al carrito</button></a>
                     </div>
                 </div>
             {% endfor %}
