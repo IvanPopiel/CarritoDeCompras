@@ -20,10 +20,10 @@ classDiagram
     class Carrito {
         -int id
         -List[ItemCarrito] items
-        +agregarProducto(producto: Producto, cantidad: int)
+        +agregarProducto(producto: Producto)
         +eliminarProducto(producto: Producto)
-        +calcularTotal() : float
-        +vaciarCarrito()
+        +restar(producto: Producto) 
+        +limpiarCarrito()
     }
 
     class Producto {
