@@ -8,10 +8,10 @@
 classDiagram
     class Usuario {
         -int id
-        -str nombre
-        -str email
-        -str direccion
-        -str telefono
+        -String nombre
+        -String email
+        -String direccion
+        -String telefono
         -Carrito carrito
         -List[Factura] facturas
         +crearFactura()
@@ -28,9 +28,9 @@ classDiagram
 
     class Producto {
         -int id
-        -str nombre
-        -str descripcion
-        -str categoria
+        -String nombre
+        -String descripcion
+        -String categoria
         -float precio
         -int stock
     }
