@@ -1,7 +1,7 @@
 # Proyecto Carrito de Compras
 
 ## JIRA del proyecto
-[JIRA del proyecto ![JIRA](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Jira_logo.svg/512px-Jira_logo.svg.png)](https://ezequiel-grisoski.atlassian.net/jira/software/projects/CAC/boards/3)
+[JIRA del proyecto ![JIRA]([https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Jira_logo.svg/512px-Jira_logo.svg.png](https://upload.wikimedia.org/wikipedia/commons/4/4a/Jira_Software%402x-blue.png))](https://ezequiel-grisoski.atlassian.net/jira/software/projects/CAC/boards/3)
 
 
 
