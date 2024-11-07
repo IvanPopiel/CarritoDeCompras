@@ -3,7 +3,52 @@
 ## JIRA del proyecto
 [JIRA del proyecto](https://ezequiel-grisoski.atlassian.net/jira/software/projects/CAC/boards/3)
 
+## Diagrama de Clases
+```mermaid
+classDiagram
+    class Usuario {
+        +int id
+        +str nombre
+        +str email
+        +str direccion
+        +str telefono
+        +Carrito carrito
+        +List[Factura] facturas
+        +def crearFactura() 
+    }
 
+    class Carrito {
+        +int id
+        +List[ItemCarrito] items
+        +def agregarProducto(producto: Producto, cantidad: int)
+        +def eliminarProducto(producto: Producto)
+        +def calcularTotal() -> float
+        +def vaciarCarrito()
+    }
+
+    class Producto {
+        +int id
+        +str nombre
+        +str descripcion
+        +str categoria
+        +float precio
+        +int stock
+    }
+
+    class Factura {
+        +int id
+        +Usuario usuario
+        +DateTime fecha
+        +List[Producto] productos
+        +float total
+    }
+
+
+    Usuario "1" --> "1" Carrito 
+    Usuario "1" --> "n" Factura 
+    Carrito "1" --> "n" Producto 
+    Factura "1" --> "n" Producto 
+```
 
 
 ## Diagrama Entidad-Relación (DER)
