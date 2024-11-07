@@ -7,42 +7,41 @@
 ```mermaid
 classDiagram
     class Usuario {
-        +int id
-        +str nombre
-        +str email
-        +str direccion
-        +str telefono
-        +Carrito carrito
-        +List[Factura] facturas
-        +def crearFactura() 
+        -int id
+        -str nombre
+        -str email
+        -str direccion
+        -str telefono
+        -Carrito carrito
+        -List[Factura] facturas
+        +crearFactura()
     }
 
     class Carrito {
-        +int id
-        +List[ItemCarrito] items
-        +def agregarProducto(producto: Producto, cantidad: int)
-        +def eliminarProducto(producto: Producto)
-        +def calcularTotal() -> float
-        +def vaciarCarrito()
+        -int id
+        -List[ItemCarrito] items
+        +agregarProducto(producto: Producto, cantidad: int)
+        +eliminarProducto(producto: Producto)
+        +calcularTotal() : float
+        +vaciarCarrito()
     }
 
     class Producto {
-        +int id
-        +str nombre
-        +str descripcion
-        +str categoria
-        +float precio
-        +int stock
+        -int id
+        -str nombre
+        -str descripcion
+        -str categoria
+        -float precio
+        -int stock
     }
 
     class Factura {
-        +int id
-        +Usuario usuario
-        +DateTime fecha
-        +List[Producto] productos
-        +float total
+        -int id
+        -Usuario usuario
+        -DateTime fecha
+        -List[Producto] productos
+        -float total
     }
-
 
     Usuario "1" --> "1" Carrito 
     Usuario "1" --> "n" Factura 
