@@ -25,17 +25,26 @@
         <div class="productos-container">
             <!-- Recorremos los productos y generamos una card por cada uno -->
             {% for producto in productos %}
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ producto.nombre }}</h2>
-                        <p class="card-description">{{ producto.descripcion }}</p>
-                        <span class="card-price">${{ producto.precio }}</span>
-                        <span class="card-stock">Stock: {{ producto.stock }}</span>
-                        <!-- El botón de agregar al carrito no debe abrir el modal -->
-                        <a href="{% url 'Agregar' producto.id %}" class="link-agregar"> <button class="btn-agregar">Añadir al carrito</button></a>
-                    </div>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ producto.nombre }}</h2>
+                    <p class="card-description">{{ producto.descripcion }}</p>
+                    <span class="card-price">${{ producto.precio }}</span>
+                    <span class="card-stock">Stock: {{ producto.stock }}</span>
+        
+                    {% if producto.stock > 0 %}
+                        <!-- Si hay stock, muestra el botón de "Añadir al carrito" -->
+                        <a href="{% url 'Agregar' producto.id %}" class="link-agregar">
+                            <button class="btn-agregar">Añadir al carrito</button>
+                        </a>
+                    {% else %}
+                        <!-- Si no hay stock, muestra un botón deshabilitado con el mensaje de agotado -->
+                        <button class="btn-agotado" disabled>Agotado</button>
+                    {% endif %}
                 </div>
-            {% endfor %}
+            </div>
+        {% endfor %}
+        
         </div>
 
         <!-- Ventana modal (oculta por defecto) -->

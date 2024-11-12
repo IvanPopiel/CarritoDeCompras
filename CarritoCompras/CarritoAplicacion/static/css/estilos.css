@@ -160,7 +160,15 @@ body {
 
 }
 
-
+.btn-agotado {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
+    opacity: 0.6; /* Añade un poco de transparencia para indicar que está deshabilitado */
+}
 
 /* Contenido del modal */
 .modal-container{
