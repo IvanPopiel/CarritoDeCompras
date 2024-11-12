@@ -19,37 +19,49 @@ class Carrito:
     def agregarProducto(self, producto):
         """Este es el método que agrega un producto al carrito"""
         id = str(producto.id)
-        if id not in self.carrito.keys():
+        
+        # Verificar si el producto ya está en el carrito
+        if id not in self.carrito:
+            # Si no está en el carrito, agregamos el producto con el stock original
             self.carrito[id] = {
                 "productoId": producto.id,
                 "nombre": producto.nombre,
                 "descripcion": producto.descripcion,
                 "precioFinal": producto.precio,
-                "stock": producto.stock,
+                "stock": 1,  # La cantidad en el carrito, por ahora es 1
+                "stockOriginal": producto.stock,  # Guardamos el stock original del producto
             }
         else:
+            # Si ya está en el carrito, solo aumentamos la cantidad y el precio final
             self.carrito[id]["stock"] += 1
             self.carrito[id]["precioFinal"] += producto.precio
+
+        # Guardamos el carrito actualizado en la sesión
         self.guardarCarrito()
-        
+
     def guardarCarrito(self):
+        """Guarda el carrito en la sesión"""
         self.session["carrito"] = self.carrito
         self.session.modified = True
 
     def eliminarProducto(self, producto):
+        """Elimina un producto del carrito"""
         id = str(producto.id)
         if id in self.carrito:
             del self.carrito[id]
             self.guardarCarrito()
 
     def restar(self, producto):
+        """Resta una unidad del producto en el carrito"""
         id = str(producto.id)
         if id in self.carrito.keys():
             self.carrito[id]["stock"] -= 1
             self.carrito[id]["precioFinal"] -= producto.precio
-            if self.carrito[id]["stock"] <= 0: self.eliminarProducto(producto)
+            if self.carrito[id]["stock"] <= 0:
+                self.eliminarProducto(producto)
             self.guardarCarrito()
 
     def limpiarCarrito(self):
+        """Limpia el carrito y restaura el stock original de los productos"""
         self.session["carrito"] = {}
         self.session.modified = True
