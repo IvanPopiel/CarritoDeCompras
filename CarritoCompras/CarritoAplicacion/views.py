@@ -5,7 +5,10 @@ from CarritoAplicacion.models import Producto
 def index(request):
     # Crear una instancia del carrito
     carrito = Carrito(request)
-    
+
+    # Obtener el total de productos en el carrito
+    total_productos = sum(item["stock"] for item in carrito.carrito.values())
+
     # Obtener el total del carrito usando el nuevo método
     total_carrito = carrito.calcular_total()
 
@@ -15,8 +18,8 @@ def index(request):
     return render(request, "index.html", {
         'productos': productos,
         'total_carrito': total_carrito,  # Pasamos el total al contexto
+        'total_productos': total_productos,  # Pasamos el total de productos al contexto
     })
-
 
 def carritoVista(request):
     # Obtener el carrito desde la sesión
@@ -43,7 +46,7 @@ def agregarProducto(request, productoId):
         producto.stock -= 1  # Decrementa el stock
         producto.save()  # Guarda los cambios en el producto
     
-    return redirect('Index')
+    return redirect('Index')  # Redirigir al mismo index
 
 def eliminarProducto(request, productoId):
     carrito = Carrito(request)
