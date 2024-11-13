@@ -16,13 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CarritoAplicacion.views import index, agregarProducto, eliminarProducto, restarProducto, limpiarCarrito #importo index
+from CarritoAplicacion.views import index, carritoVista, agregarProducto, eliminarProducto, restarProducto, sumarProducto, limpiarCarrito #importo index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="Index"), #incluyo para que levante el index
+    path('carritoVista/', carritoVista, name="carritoVista"),
     path('agregar/<int:productoId>/', agregarProducto, name="Agregar"),
     path('eliminar/<int:productoId>/', eliminarProducto, name="Eliminar"),
     path('restar/<int:productoId>/', restarProducto, name="Restar"),
+    path('sumar/<int:productoId>/', sumarProducto, name="Sumar"),
     path('impiar/', limpiarCarrito, name="Limpiar"),
 ]

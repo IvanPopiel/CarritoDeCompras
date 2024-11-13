@@ -14,7 +14,8 @@
         <h1 class="header-title">Bienvenidos a la Tienda</h1>
         <!-- Botón para abrir el modal -->
         <div class="container-icono-carrito">
-            <img src="../static/img/shopping-trolley_4883608.png" alt="carrito" id="abrirModalBtn" class="btn-abrir-modal">
+            <a href="{% url 'carritoVista' %}"><img src="../static/img/shopping-trolley_4883608.png" alt="carrito" id="abrirModalBtn" class="btn-abrir-modal"></a>
+            
         </div>
         
     
@@ -49,7 +50,7 @@
 
         <!-- Ventana modal (oculta por defecto) -->
         <div class="modal-container" id="modalCarrito" style="display: none;">
-            {% include "ventanaModal.html" %}
+            {% include "carritoVista.html" %}
         </div>
     </div>
 

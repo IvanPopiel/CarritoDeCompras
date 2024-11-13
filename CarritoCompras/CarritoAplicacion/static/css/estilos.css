@@ -29,11 +29,9 @@ body {
     font-weight: bold;
 }
 
-
-
 /* Estilo para el contenedor del icono */
 .container-icono-carrito {
-    width: 40px;        /* Tamaño del contenedor */
+    width: 40px; /* Tamaño del contenedor */
     height: 40px;
     display: block;
     margin: 20px auto;
@@ -64,14 +62,9 @@ body {
 /* Contenedor de productos */
 .productos-container {
     display: flex;
-    /*flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start;
-    */
     flex-direction: column;
     align-items: center;
     width: 70%;
-    
 }
 
 /* Card de productos */
@@ -143,7 +136,6 @@ body {
     font-weight: bolder;
     border-radius: 5px;
     transition: background-color 0.3s;
-    
 }
 
 .btn-agregar:hover {
@@ -151,13 +143,12 @@ body {
     cursor: pointer;
 }
 
-.link-agregar{
+.link-agregar {
     text-decoration: none !important;
     color: #f0f0f0;
     display: flex;
     flex-direction: row;
     justify-content: center;
-
 }
 
 .btn-agotado {
@@ -166,135 +157,212 @@ body {
     padding: 10px 20px;
     text-align: center;
     border-radius: 5px;
-    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
-    opacity: 0.6; /* Añade un poco de transparencia para indicar que está deshabilitado */
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
-/* Contenido del modal */
-.modal-container{
-    
-    width: 40%;
-    z-index: 1000;
-    position: fixed;
-    top: 200px
-    
-    
-}
-.modal-content {
-    
-    border-radius: 8px;
-    padding: 20px;
-    width: 40vw;
-    background-color: gray;
-    
-    
-}
 
-/* Título del modal */
-.modal-header {
+/*carrito vista*/
+
+.modal-content{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #f0f0f0;
-    margin-bottom: 15px;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.modal-header h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-}
 
-.modal-header .close-btn {
-    font-size: 30px;
-    color: #333;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.modal-header .close-btn:hover {
-    color: #dc3545; /* Color rojo para el hover */
-}
-
-/* Tabla de productos en el carrito */
+/* Estilos generales de la tabla del carrito */
 .carrito-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+    border-collapse: collapse; /* Elimina los espacios entre celdas */
+    margin-bottom: 20px; /* Separación del resto del contenido */
 }
 
-.carrito-table th, .carrito-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
+/* Estilo de las celdas de encabezado */
 .carrito-table th {
-    background-color: #f4f4f4;
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f4f4f4; /* Fondo gris claro */
+    color: #333;
+    border-bottom: 2px solid #ddd; /* Línea de separación */
+    letter-spacing: 1px;
+}
+
+/* Estilo de las celdas de la tabla */
+.carrito-table td {
+    padding: 12px 15px;
+    font-size: 16px;
+    color: #555;
+    border-bottom: 1px solid #ddd; /* Línea de separación entre filas */
+}
+
+/* Estilo para el nombre del producto */
+.carrito-table .producto-nombre {
     font-weight: bold;
     color: #333;
 }
 
-.carrito-table td {
-    font-size: 16px;
+/* Estilo para el precio del producto */
+.carrito-table .producto-precio {
+    color: #28a745; /* Color verde para los precios */
+    font-weight: bold;
 }
 
-a {
+/* Estilo para la columna de cantidad y los enlaces + y - */
+.carrito-table .producto-cantidad {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilo de los botones de acción + y - */
+.carrito-table .producto-cantidad a {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f4f4f4;
+    color: #007bff; /* Azul para los enlaces de acción */
+    font-size: 20px;
+    font-weight: bold;
     text-decoration: none;
-    color: #007BFF;
+    border-radius: 5px;
     margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-a:hover {
-    text-decoration: underline;
+/* Efecto hover para los botones + y - */
+.carrito-table .producto-cantidad a:hover {
+    background-color: #007bff; /* Azul oscuro en hover */
+    color: white; /* Texto blanco en hover */
 }
 
-/* Total del carrito */
-.total-row {
+/* Estilo para la fila cuando no hay productos */
+.carrito-table .sin-productos {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    font-style: italic;
+}
+
+/* Estilo del encabezado de la tabla */
+.carrito-header {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #007bff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Estilo de la fila de total */
+.carrito-table .total-row {
     font-size: 20px;
     font-weight: bold;
     color: #333;
+    background-color: #f4f4f4;
+    padding: 15px;
 }
 
-.total-carrito {
-    font-size: 18px;
-    font-weight: normal;
+/* Estilo para la etiqueta de total */
+.carrito-table .total-label {
+    font-weight: 600;
     color: #333;
 }
 
-/* Botones del modal */
+/* Estilo para el total en sí */
+.carrito-table .total-carrito {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    text-align: right;
+}
+
+
+
+
+/* Estilos para los botones del pie del modal */
 .modal-footer {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    justify-content: space-between; /* Asegura que los botones estén bien distribuidos */
+    padding: 20px;
+    border-top: 2px solid #ddd; /* Línea de separación superior */
+    background-color: #f9f9f9; /* Fondo ligeramente gris */
 }
 
-.modal-footer a {
-    padding: 10px 20px;
-    background-color: #28a745;
+/* Estilo del botón "Limpiar" */
+.btn-limpiar {
+    background-color: #dc3545; /* Rojo intenso */
     color: white;
+    padding: 12px 30px;
+    text-align: center;
     border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.modal-footer a:hover {
-    background-color: #218838;
-}
-
-.btn-limpiar {
-    background-color: #dc3545;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-limpiar:hover {
-    background-color: #c82333;
+    background-color: #c82333; /* Rojo más oscuro para hover */
+    transform: translateY(-2px); /* Efecto de elevación en hover */
 }
 
-/* Estilos adicionales */
-.close-btn {
-    cursor: pointer;
-    font-size: 30px;
+.btn-limpiar:active {
+    transform: translateY(0); /* Asegura que el botón vuelva a su lugar cuando se hace clic */
 }
 
-/* Media Queries para hacer el diseño responsive */
+/* Estilo del botón "Finalizar" */
+.btn-finalizar {
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
+.btn-finalizar:hover {
+    background-color: #218838; /* Verde más oscuro para hover */
+    transform: translateY(-2px); /* Efecto de elevación en hover */
+}
+
+.btn-finalizar:active {
+    transform: translateY(0); /* Vuelve a la posición inicial al hacer clic */
+}
+
+
+/* Estilo del contenedor del botón "Volver" */
+.Volver {
+    text-align: center; /* Centra el botón horizontalmente */
+    margin-top: 30px;   /* Añade un margen superior */
+}
+
+/* Estilo del botón "Volver al inicio" */
+.btn-volver {
+    display: inline-block;
+    background-color: #007bff; /* Color de fondo azul */
+    color: white;              /* Color del texto blanco */
+    padding: 12px 30px;        /* Espaciado cómodo */
+    font-size: 18px;           /* Tamaño de fuente adecuado */
+    text-align: center;
+    text-decoration: none;     /* Elimina el subrayado */
+    border-radius: 5px;        /* Bordes redondeados */
+    font-weight: bold;         /* Texto en negrita */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+}
+
+/* Efecto Hover para el botón */
+.btn-volver:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+    transform: translateY(-3px); /* Efecto de elevación */
+}
+
+/* Efecto Active para cuando se hace clic en el botón */
+.btn-volver:active {
+    transform: translateY(0); /* Vuelve a su posición original */
+}

@@ -16,6 +16,11 @@ class Carrito:
         else:
             self.carrito = carrito
 
+    def existeProducto(self, producto):
+        """Verifica si un producto está en el carrito"""
+        id = str(producto.id)
+        return id in self.carrito
+
     def agregarProducto(self, producto):
         """Este es el método que agrega un producto al carrito"""
         id = str(producto.id)
@@ -65,3 +70,11 @@ class Carrito:
         """Limpia el carrito y restaura el stock original de los productos"""
         self.session["carrito"] = {}
         self.session.modified = True
+
+
+    def calcular_total(self):
+        """Calcula el total del carrito sumando los precios finales de los productos."""
+        total = 0
+        for item in self.carrito.values():
+            total += float(item["precioFinal"])
+        return total
