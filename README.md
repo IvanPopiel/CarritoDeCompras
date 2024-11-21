@@ -97,7 +97,7 @@ classDiagram
 
 ## Diagrama de Secuencia
 
-´´´mermaid
+```mermaid
 sequenceDiagram
     participant Cliente
     participant Carrito
@@ -123,11 +123,11 @@ sequenceDiagram
     Factura->>Cliente: Mostrar factura
     Cliente->>Compra: Finalizar compra
     Compra->>Carrito: Limpiar carrito
-´´´
+```
 
 
 ## Pruebas Unitarias
-´´´python
+```python
 import unittest
 from carrito import Carrito
 from producto import Producto
@@ -180,7 +180,7 @@ class TestCarrito(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-´´´
+```
 
 
 ## Diagrama Entidad-Relación (DER)
