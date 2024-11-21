@@ -95,6 +95,93 @@ classDiagram
     Factura "1" --> "1" Cliente
 ```
 
+## Diagrama de Secuencia
+
+´´´mermaid
+sequenceDiagram
+    participant Cliente
+    participant Carrito
+    participant Producto
+    participant MetodoPago
+    participant Compra
+    participant Factura
+
+    Cliente->>Carrito: Crear Carrito
+    Carrito->>Cliente: Carrito creado exitosamente
+    Cliente->>Producto: Ver productos disponibles
+    Producto->>Cliente: Mostrar productos
+    Cliente->>Carrito: Agregar productos al carrito
+    Carrito->>Cliente: Producto agregado al carrito
+    Cliente->>Carrito: Calcular total
+    Carrito->>Cliente: Mostrar total
+    Cliente->>MetodoPago: Seleccionar metodo de pago
+    MetodoPago->>Cliente: Confirmar metodo de pago
+    Cliente->>Compra: Realizar compra
+    Compra->>MetodoPago: Procesar pago
+    MetodoPago->>Compra: Confirmar pago exitoso
+    Compra->>Factura: Generar factura
+    Factura->>Cliente: Mostrar factura
+    Cliente->>Compra: Finalizar compra
+    Compra->>Carrito: Limpiar carrito
+´´´
+
+
+## Pruebas Unitarias
+´´´python
+import unittest
+from carrito import Carrito
+from producto import Producto
+from compra import Compra
+from metodo_pago import MetodoPago
+
+class TestCarrito(unittest.TestCase):
+    
+    def setUp(self):
+        # Crear productos de prueba
+        self.producto1 = Producto(id=1, nombre="Producto A", descripcion="Descripción A", precio=100.0, stock=10)
+        self.producto2 = Producto(id=2, nombre="Producto B", descripcion="Descripción B", precio=200.0, stock=5)
+        
+        # Crear un carrito de prueba
+        self.carrito = Carrito(cliente_id=1)
+    
+    def test_agregar_producto(self):
+        """Probar que agregar un producto al carrito funciona correctamente"""
+        self.carrito.agregar_producto(self.producto1)
+        self.assertIn(self.producto1, self.carrito.productos)
+    
+    def test_calcular_total(self):
+        """Probar que el cálculo del total del carrito funciona correctamente"""
+        self.carrito.agregar_producto(self.producto1)
+        self.carrito.agregar_producto(self.producto2)
+        total = self.carrito.calcular_total()
+        self.assertEqual(total, 300.0)
+    
+    def test_eliminar_producto(self):
+        """Probar que se puede eliminar un producto del carrito"""
+        self.carrito.agregar_producto(self.producto1)
+        self.carrito.eliminar_producto(self.producto1)
+        self.assertNotIn(self.producto1, self.carrito.productos)
+    
+    def test_realizar_compra(self):
+        """Probar que se puede realizar una compra correctamente"""
+        self.carrito.agregar_producto(self.producto1)
+        metodo_pago = MetodoPago(id=1, monto=100.0)
+        compra = Compra(cliente_id=1, metodo_pago=metodo_pago, productos=[self.producto1])
+        
+        # Simulamos la compra
+        resultado_compra = compra.realizar_compra()
+        self.assertTrue(resultado_compra)
+    
+    def test_limpiar_carrito(self):
+        """Probar que se puede limpiar el carrito correctamente"""
+        self.carrito.agregar_producto(self.producto1)
+        self.carrito.limpiar_carrito()
+        self.assertEqual(len(self.carrito.productos), 0)
+
+if __name__ == '__main__':
+    unittest.main()
+´´´
+
 
 ## Diagrama Entidad-Relación (DER)
 
