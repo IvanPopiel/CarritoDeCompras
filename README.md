@@ -121,20 +121,19 @@ El proyecto también está diseñado para ser escalable, facilitando la integrac
 ## Usuario
 
 ### I. Registrar una cuenta.
-Como **usuario**, 
-quiero **poder registrar una cuenta**,
+Como **usuario**,  
+quiero **poder registrar una cuenta**,  
 para **crear un perfil que me permita realizar compras en el sistema**.
 
 ### II. Iniciar sesión.
-Como **usuario**, 
-quiero **poder iniciar sesión**,
+Como **usuario**,  
+quiero **poder iniciar sesión**,  
 para **acceder a mi cuenta y gestionar mi carrito de compras**.
 
 ### III. Recuperar contraseña.
-Como **usuario**, 
-quiero **poder recuperar mi contraseña en caso de olvido**,
+Como **usuario**,  
+quiero **poder recuperar mi contraseña en caso de olvido**,  
 para **poder acceder sin problemas a mi cuenta**.
-
 
 ### IV. Ver productos.
 Como **usuario**,  
@@ -214,8 +213,6 @@ para **asegurar que solo los productos disponibles se puedan visualizar**.
 Como **administrador**,  
 quiero **actualizar los productos**,  
 para **que la cantidad disponible refleje un stock real y evitar así errores en las compras**.
-
-
 
 ---
 
