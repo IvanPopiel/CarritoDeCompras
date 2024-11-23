@@ -120,47 +120,63 @@ El proyecto también está diseñado para ser escalable, facilitando la integrac
 
 ## Usuario
 
-### I. Ver productos
+### I. Registrar una cuenta.
+Como **usuario**, 
+quiero **poder registrar una cuenta**,
+para **crear un perfil que me permita realizar compras en el sistema**.
+
+### II. Iniciar sesión.
+Como **usuario**, 
+quiero **poder iniciar sesión**,
+para **acceder a mi cuenta y gestionar mi carrito de compras**.
+
+### III. Recuperar contraseña.
+Como **usuario**, 
+quiero **poder recuperar mi contraseña en caso de olvido**,
+para **poder acceder sin problemas a mi cuenta**.
+
+
+### IV. Ver productos.
 Como **usuario**,  
 quiero **ver una lista de todos los productos de la tienda**,  
 para **elegir los productos que quiero comprar**.
 
-### II. Visualizar carrito
+### V. Visualizar carrito.
 Como **usuario**,  
 quiero **tener acceso al carrito**,  
 para **tener un control de los productos en los que estoy interesado**.
 
-### III. Visualizar stock
+### VI. Visualizar stock.
 Como **usuario**,  
 quiero **visualizar el stock en tiempo real**,  
 para **saber la cantidad de unidades disponibles que el sistema posee**.
 
-### IV. Agregar productos al carrito
+### VII. Agregar productos al carrito.
 Como **usuario**,  
 quiero **poder agregar productos al carrito**,  
 para **tener una lista de los productos que he seleccionado**.
 
-### V. Eliminar productos del carrito
+### VIII. Eliminar productos del carrito.
 Como **usuario**,  
 quiero **poder eliminar un producto especificado**,  
 para **regular mi selección antes de finalizar la compra**.
 
-### VI. Sumar productos desde el carrito
+### IX. Sumar productos desde el carrito.
 Como **usuario**,  
 quiero **poder aumentar un producto desde el carrito**,  
 para **ajustar las cantidades en base a mis intereses**.
 
-### VII. Restar productos del carrito
+### X. Restar productos del carrito.
 Como **usuario**,  
 quiero **reducir la cantidad de productos en mi carrito**,  
 para **ajustar las cantidades en base a mi presupuesto o necesidades**.
 
-### VIII. Vaciar el carrito
+### XI. Vaciar el carrito.
 Como **usuario**,  
 quiero **poder vaciar el carrito solo con un click**,  
 para **borrar todos los productos y así poder empezar de nuevo**.
 
-### IX. Comprar productos
+### XII. Comprar productos.
 Como **usuario**,  
 quiero **poder comprar los productos seleccionados en el carrito**,  
 para **finalizar mi compra de manera rápida y segura**.
@@ -169,25 +185,37 @@ para **finalizar mi compra de manera rápida y segura**.
 
 ## Administrador
 
-### I. Administrar productos
+### I. Actualizar los productos.
+Como **administrador**,  
+quiero **poder iniciar sesión en mi cuenta con rol admin**,  
+para **gestionar los productos, pedidos y el inventario**.
+
+### II. Ver historial de usuarios.
+Como **administrador**,  
+quiero **ver un historial de usuarios registrados**,  
+para **monitorear las cuentas creadas, y sus respectivas compras**.
+
+### III. Administrar productos.
 Como **administrador**,  
 quiero **poder gestionar la lista de productos en la tienda**,  
 para **mantener actualizada la oferta de productos disponibles para los usuarios**.
 
-### II. Agregar productos a la Base de datos
+### IV. Agregar productos a la Base de datos.
 Como **administrador**,  
 quiero **poder añadir nuevos productos a la base de datos**,  
 para **ampliar el catálogo y ofrecer más opciones**.
 
-### III. Eliminar productos de la Base de datos
+### V. Eliminar productos de la Base de datos.
 Como **administrador**,  
 quiero **poder eliminar productos de la base de datos**,  
 para **asegurar que solo los productos disponibles se puedan visualizar**.
 
-### IV. Actualizar los productos
+### VI. Actualizar los productos.
 Como **administrador**,  
 quiero **actualizar los productos**,  
 para **que la cantidad disponible refleje un stock real y evitar así errores en las compras**.
+
+
 
 ---
 
