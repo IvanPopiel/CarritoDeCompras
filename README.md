@@ -204,6 +204,44 @@ para **que la cantidad disponible refleje un stock real y evitar así errores en
 
 ## Estructura del Proyecto
 
+- migrations/
+  - Contiene las migraciones generadas por Django para gestionar los cambios en la base de datos.
+
+- static/
+  - Contiene archivos estáticos (CSS, imágenes y JavaScript).
+  - **css/**: Archivos CSS.
+  - **img/**: Imágenes utilizadas en el proyecto.
+  - **js/**: Archivos JavaScript.
+
+- templates/
+  - Contiene las plantillas HTML que renderiza el servidor.
+  - **auth/**
+    - **login.html**: Página para iniciar sesión de los usuarios.
+    - **register.html**: Página para el registro de nuevos usuarios.
+  - **carritoVista.html**: Vista que muestra el contenido del carrito de compras.
+  - **checkout.html**: Vista para procesar el pago y finalizar la compra.
+  - **index.html**: Página de inicio del sitio web.
+
+- carrito.py
+  - Archivos relacionados con la lógica del carrito de compras.
+
+- admin.py
+  - Configuración para la administración del sitio web a través del panel de administración de Django.
+
+- apps.py
+  - Configuración de la aplicación de Django.
+
+- context_processor.py
+  - Contiene funciones para añadir datos al contexto de las vistas (por ejemplo, el carrito de compras en cada vista).
+
+- models.py
+  - Define los modelos de la base de datos (por ejemplo, Producto, Cliente, Carrito, etc.).
+
+- tests.py
+  - Contiene pruebas unitarias y de integración para garantizar que el sistema funcione correctamente.
+
+- views.py
+  - Define las vistas que manejan las solicitudes HTTP y renderizan las plantillas correspondientes.
 
 
 
@@ -316,6 +354,27 @@ classDiagram
 
 ```mermaid
 
+sequenceDiagram
+    actor Cliente
+    participant Carrito
+    participant Producto
+    participant ProcesadorPagos
+    participant Factura
+
+    Cliente ->> Producto: Seleccionar producto
+    Producto ->> Producto: Verificar stock
+    Producto -->> Cliente: Confirmar disponibilidad
+    Cliente ->> Carrito: Agregar producto al carrito
+    Carrito ->> Producto: Validar existencia
+    Producto -->> Carrito: Confirmar producto agregado
+    Cliente ->> Carrito: Realizar compra
+    Carrito ->> ProcesadorPagos: Procesar pago
+    ProcesadorPagos -->> Carrito: Confirmar pago exitoso
+    Carrito ->> Factura: Solicitar generación de factura
+    Factura -->> Cliente: Enviar factura
+
+
+
 ```
 
 
@@ -375,10 +434,216 @@ class ProcesadorPagosTestCase(TestCase):
 ## Diagrama Entidad-Relación (DER)
 
 ```mermaid
+erDiagram
+    Producto {
+        int idProducto PK
+        string nombre
+        string descripcion
+        float precio
+        int stock
+    }
 
+    Persona {
+        int idPersona PK
+        string nombre
+        string email
+        string telefono
+    }
+
+    Cliente {
+        int idCliente PK, FK
+        string direccion
+    }
+
+    Administrador {
+        int idAdmin PK, FK
+        string nivel
+    }
+
+    User {
+        int idUser PK
+        string username
+        string password
+        int idPersona FK
+    }
+
+    Carrito {
+        int idCarrito PK
+        int idCliente FK
+    }
+
+    Carrito_Producto {
+        int idCarrito FK
+        int idProducto FK
+        int cantidad
+    }
+
+    Factura {
+        int idFactura PK
+        int idCompra FK
+        int idCliente FK
+        DateTime fecha
+        float total
+    }
+
+    MetodoPago {
+        int idMetodoPago PK
+        float monto
+    }
+
+    Efectivo {
+        int idMetodoPago FK
+        float monto_recibido
+    }
+
+    BilleteraVirtual {
+        int idMetodoPago FK
+        string cuenta
+    }
+
+    Criptomonedas {
+        int idMetodoPago FK
+        string wallet
+        string moneda
+    }
+
+    TarjetaCredito {
+        int idMetodoPago FK
+        string numeroTarjeta
+        string titular
+        DateTime fechaExpiracion
+    }
+
+    %% Relaciones entre entidades
+    Persona ||--o{ Cliente : "es"
+    Persona ||--o{ Administrador : "es"
+    Persona ||--|| User : "se asocia con"
+    Cliente ||--|| Carrito : "tiene"
+    Carrito }o--o{ Producto : "contiene"
+    Carrito ||--o{ Carrito_Producto : ""
+    Producto ||--o{ Carrito_Producto : ""
+    Factura ||--|| Cliente : "pertenece a"
+    MetodoPago ||--o| Efectivo : "es un"
+    MetodoPago ||--o| BilleteraVirtual : "es un"
+    MetodoPago ||--o| Criptomonedas : "es un"
+    MetodoPago ||--o| TarjetaCredito : "es un"
 ```
 
 ---
 
 
 ## Diccionario de Datos
+
+
+
+## Tabla: Producto
+| Campo         | Descripción                      | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|----------------------------------|---------------|--------|----------------|
+| `idProducto`  | Identificador único del producto | INT           | -      | PK, NOT NULL   |
+| `nombre`      | Nombre del producto             | VARCHAR       | 100    | NOT NULL       |
+| `descripcion` | Descripción del producto        | TEXT          | -      | NULLABLE       |
+| `precio`      | Precio del producto             | FLOAT         | -      | NOT NULL       |
+| `stock`       | Cantidad disponible             | INT           | -      | Default: 0     |
+
+---
+
+## Tabla: Persona
+| Campo         | Descripción                           | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|---------------------------------------|---------------|--------|----------------|
+| `idPersona`   | Identificador único de la persona     | INT           | -      | PK, NOT NULL   |
+| `nombre`      | Nombre completo de la persona         | VARCHAR       | 100    | NOT NULL       |
+| `email`       | Correo electrónico de la persona      | VARCHAR       | 100    | UNIQUE, NOT NULL |
+| `telefono`    | Número de teléfono de la persona      | VARCHAR       | 15     | NULLABLE       |
+
+---
+
+## Tabla: Cliente
+| Campo         | Descripción                           | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|---------------------------------------|---------------|--------|----------------|
+| `idCliente`   | Identificador único del cliente       | INT           | -      | PK, FK (Persona.idPersona), NOT NULL |
+| `direccion`   | Dirección del cliente                | VARCHAR       | 255    | NULLABLE       |
+
+---
+
+## Tabla: Administrador
+| Campo         | Descripción                           | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|---------------------------------------|---------------|--------|----------------|
+| `idAdmin`     | Identificador único del administrador | INT           | -      | PK, FK (Persona.idPersona), NOT NULL |
+| `nivel`       | Nivel del administrador               | VARCHAR       | 50     | NOT NULL       |
+
+---
+
+## Tabla: User
+| Campo         | Descripción                           | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|---------------------------------------|---------------|--------|----------------|
+| `idUser`      | Identificador único del usuario       | INT           | -      | PK, NOT NULL   |
+| `username`    | Nombre de usuario                    | VARCHAR       | 50     | UNIQUE, NOT NULL |
+| `password`    | Contraseña del usuario               | VARCHAR       | 255    | NOT NULL       |
+| `idPersona`   | Identificador asociado a una persona | INT           | -      | FK (Persona.idPersona), NOT NULL |
+
+---
+
+## Tabla: Carrito
+| Campo          | Descripción                                | Tipo de Dato  | Tamaño | Restricciones |
+|-----------------|--------------------------------------------|---------------|--------|---------------|
+| `idCarrito`     | Identificador único del carrito            | INT           | -      | PK, NOT NULL  |
+| `idCliente`     | Identificador del cliente asociado         | INT           | -      | FK (Cliente.idCliente), NOT NULL  |
+
+---
+
+## Tabla: Carrito_Producto
+| Campo         | Descripción                                     | Tipo de Dato  | Tamaño | Restricciones |
+|---------------|-------------------------------------------------|---------------|--------|---------------|
+| `idCarrito`   | Identificador del carrito                       | INT           | -      | FK (Carrito.idCarrito), NOT NULL  |
+| `idProducto`  | Identificador del producto                      | INT           | -      | FK (Producto.idProducto), NOT NULL  |
+| `cantidad`    | Cantidad del producto en el carrito             | INT           | -      | Default: 1    |
+
+---
+
+## Tabla: Factura
+| Campo         | Descripción                          | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|--------------------------------------|---------------|--------|----------------|
+| `idFactura`   | Identificador único de la factura    | INT           | -      | PK, NOT NULL   |
+| `idCompra`    | Identificador de la compra asociada  | INT           | -      | FK, NOT NULL   |
+| `idCliente`   | Identificador del cliente asociado   | INT           | -      | FK, NOT NULL   |
+| `fecha`       | Fecha de emisión de la factura       | DATETIME      | -      | NOT NULL       |
+| `total`       | Total de la factura                 | FLOAT         | -      | NOT NULL       |
+
+---
+
+## Tabla: MetodoPago
+| Campo         | Descripción                          | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|--------------------------------------|---------------|--------|----------------|
+| `idMetodoPago`| Identificador único del método pago  | INT           | -      | PK, NOT NULL   |
+| `monto`       | Monto del pago                      | FLOAT         | -      | NOT NULL       |
+
+---
+
+### Subtipos de MetodoPago
+
+#### **Efectivo**
+| Campo              | Descripción                   | Tipo de Dato  | Tamaño | Restricciones  |
+|--------------------|-------------------------------|---------------|--------|----------------|
+| `idMetodoPago`     | Identificador del método pago | INT           | -      | FK, NOT NULL   |
+| `monto_recibido`   | Monto recibido               | FLOAT         | -      | NOT NULL       |
+
+#### **BilleteraVirtual**
+| Campo              | Descripción                   | Tipo de Dato  | Tamaño | Restricciones  |
+|--------------------|-------------------------------|---------------|--------|----------------|
+| `idMetodoPago`     | Identificador del método pago | INT           | -      | FK, NOT NULL   |
+| `cuenta`           | Cuenta de la billetera        | VARCHAR       | 100    | NOT NULL       |
+
+#### **Criptomonedas**
+| Campo              | Descripción                   | Tipo de Dato  | Tamaño | Restricciones  |
+|--------------------|-------------------------------|---------------|--------|----------------|
+| `idMetodoPago`     | Identificador del método pago | INT           | -      | FK, NOT NULL   |
+| `wallet`           | Dirección del monedero        | VARCHAR       | 100    | NOT NULL       |
+| `moneda`           | Tipo de criptomoneda          | VARCHAR       | 50     | NOT NULL       |
+
+#### **TarjetaCredito**
+| Campo              | Descripción                   | Tipo de Dato  | Tamaño | Restricciones  |
+|--------------------|-------------------------------|---------------|--------|----------------|
+| `idMetodoPago`     | Identificador del método pago | INT           | -      | FK, NOT NULL   |
+| `numeroTarjeta`    | Número de la tarjeta          | VARCHAR       | 16     | NOT NULL       |
+| `titular`          | Titular de la tarjeta         | VARCHAR       | 100    | NOT NULL       |
+| `fechaExpiracion`  | Fecha de expiración           | DATETIME      | -      | NOT NULL       |
