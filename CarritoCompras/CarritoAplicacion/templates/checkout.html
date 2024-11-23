@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+</head>
+<body>
+    <h1>Proceso de pago</h1>
+    <p>Total a pagar: {{ total }}</p>
+    
+    <h3>Elige un método de pago:</h3>
+    <form action="{% url 'ProcesarPago' %}" method="post">
+        {% csrf_token %}
+        
+        <label for="efectivo">
+            <input type="radio" name="metodo_pago" id="efectivo" value="efectivo"> Efectivo
+        </label><br>
+        
+        <label for="billetera">
+            <input type="radio" name="metodo_pago" id="billetera" value="billetera"> Billetera Virtual
+        </label><br>
+        
+        <label for="tarjeta">
+            <input type="radio" name="metodo_pago" id="tarjeta" value="tarjeta"> Tarjeta de Crédito
+        </label><br>
+        
+        <label for="criptomonedas">
+            <input type="radio" name="metodo_pago" id="criptomonedas" value="criptomonedas"> Criptomonedas
+        </label><br>
+        
+        <button type="submit">Pagar</button>
+    </form>
+</body>
+</html>

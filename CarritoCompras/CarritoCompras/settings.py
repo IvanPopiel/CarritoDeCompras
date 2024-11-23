@@ -112,13 +112,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'Login'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "/CarritoAplicacion/static", #aca va a ir estilos, bootstrap, imgs, etc
+    BASE_DIR / "CarritoAplicacion/static",  
 ]
 
 # Default primary key field type

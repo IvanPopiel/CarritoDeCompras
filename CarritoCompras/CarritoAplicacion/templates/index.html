@@ -11,15 +11,33 @@
     <!-- Header con título centralizado -->
     <header class="header">
         <h1 class="header-title">Bienvenidos a la Tienda</h1>
+        
+        <!-- Condición para mostrar "Iniciar sesión" y "Registrarse" si no está autenticado -->
+        <div class="auth-links">
+            {% if user.is_authenticated %}
+            <p>Hola, {{ user.username }}</p>
+            <form action="{% url 'Logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn-logout">Cerrar sesión</button>
+            </form>
+        {% else %}
+            <a href="{% url 'Login' %}">
+                <button class="btn-login">Iniciar sesión</button>
+            </a>
+            <a href="{% url 'Register' %}">
+                <button class="btn-register">Registrarse</button>
+            </a>
+        {% endif %}
+        </div>
+
         <!-- Botón para abrir el modal -->
         <div class="container-icono-carrito">
             <a href="{% url 'carritoVista' %}">
-                <img src="../static/img/shopping-trolley_4883608.png" alt="carrito" id="abrirModalBtn" class="btn-abrir-modal">
+                <img src="{% static 'img/shopping-trolley_4883608.png' %}" alt="carrito" id="abrirModalBtn" class="btn-abrir-modal">
                 <!-- Mostramos el contador de productos en el carrito -->
                 <span class="contador-carrito">{{ total_productos }}</span>
             </a>
         </div>
-        
     </header>
 
     <div class="container-main">
@@ -61,8 +79,5 @@
 
     <!-- Vinculamos el archivo JS -->
     <script src="{% static 'js/main.js' %}" defer></script>
-
-    
-
 </body>
 </html>
