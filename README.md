@@ -216,6 +216,131 @@ para **que la cantidad disponible refleje un stock real y evitar así errores en
 
 ---
 
+# Casos de Uso
+
+## Usuario
+
+### Caso de Uso 1: Registrar una cuenta
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario no tiene cuenta en el sistema.
+- **Flujo Básico**:
+  1. El usuario ingresa sus datos personales (nombre, email, contraseña).
+  2. El sistema valida los datos.
+  3. El sistema crea una cuenta para el usuario.
+  4. El sistema muestra un mensaje de confirmación.
+- **Flujos Alternativos**:
+  - Si los datos son incorrectos o incompletos, el sistema muestra un mensaje de error.
+
+### Caso de Uso 2: Iniciar sesión
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario tiene una cuenta registrada.
+- **Flujo Básico**:
+  1. El usuario ingresa su email y contraseña.
+  2. El sistema valida las credenciales.
+  3. El sistema muestra la página principal con acceso al carrito de compras.
+- **Flujos Alternativos**:
+  - Si las credenciales son incorrectas, el sistema muestra un mensaje de error.
+
+### Caso de Uso 3: Recuperar contraseña
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario ha olvidado su contraseña.
+- **Flujo Básico**:
+  1. El usuario selecciona la opción "Recuperar contraseña".
+  2. El sistema solicita al usuario su email.
+  3. El sistema envía un enlace para restablecer la contraseña al correo proporcionado.
+  4. El usuario accede al enlace y establece una nueva contraseña.
+  5. El sistema muestra un mensaje de confirmación.
+  
+### Caso de Uso 4: Ver productos
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario está autenticado.
+- **Flujo Básico**:
+  1. El usuario accede a la sección de productos.
+  2. El sistema muestra una lista de productos disponibles.
+  
+### Caso de Uso 5: Visualizar carrito
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario ha añadido productos al carrito.
+- **Flujo Básico**:
+  1. El usuario accede al carrito.
+  2. El sistema muestra los productos en el carrito con sus cantidades y precios.
+  
+### Caso de Uso 6: Agregar productos al carrito
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario está autenticado.
+- **Flujo Básico**:
+  1. El usuario selecciona un producto.
+  2. El usuario elige la cantidad y lo añade al carrito.
+  3. El sistema actualiza el carrito con el nuevo producto.
+  
+### Caso de Uso 7: Eliminar productos del carrito
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario tiene productos en el carrito.
+- **Flujo Básico**:
+  1. El usuario selecciona un producto para eliminar.
+  2. El sistema elimina el producto del carrito y actualiza la vista.
+  
+### Caso de Uso 8: Comprar productos
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario tiene productos en su carrito.
+- **Flujo Básico**:
+  1. El usuario selecciona "Comprar".
+  2. El sistema valida la disponibilidad de los productos.
+  3. El sistema procesa el pago.
+  4. El sistema muestra un mensaje de confirmación de compra.
+
+---
+
+## Administrador
+
+### Caso de Uso 1: Iniciar sesión como administrador
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador tiene una cuenta registrada.
+- **Flujo Básico**:
+  1. El administrador ingresa sus credenciales (email y contraseña).
+  2. El sistema valida las credenciales y lo redirige al panel de administración.
+  
+### Caso de Uso 2: Ver historial de usuarios
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona "Historial de usuarios".
+  2. El sistema muestra una lista de usuarios registrados con sus detalles y compras realizadas.
+  
+### Caso de Uso 3: Administrar productos
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona "Administrar productos".
+  2. El sistema muestra la lista de productos disponibles en el sistema.
+  3. El administrador puede añadir, eliminar o modificar productos.
+  
+### Caso de Uso 4: Agregar productos
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona "Añadir producto".
+  2. El administrador ingresa los detalles del producto (nombre, descripción, precio, stock).
+  3. El sistema agrega el producto a la base de datos.
+  
+### Caso de Uso 5: Eliminar productos
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona un producto para eliminar.
+  2. El sistema elimina el producto de la base de datos.
+  
+### Caso de Uso 6: Actualizar productos
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona un producto para actualizar.
+  2. El administrador modifica la información del producto (precio, stock).
+  3. El sistema actualiza el producto en la base de datos.
+
+
+---
+
 ## Stack Tecnológico
 
 - **Lenguaje de programación:** Python.
