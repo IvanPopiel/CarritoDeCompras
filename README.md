@@ -278,6 +278,7 @@ para **diversificar las opciones de pago y atraer usuarios interesados en esta t
 Como **administrador**,  
 quiero **habilitar y gestionar la opción de pago en efectivo**,  
 para **cubrir las necesidades de los usuarios que prefieren este método**.  
+
 ---
 
 # Casos de Uso
