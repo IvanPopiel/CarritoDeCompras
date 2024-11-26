@@ -180,6 +180,46 @@ Como **usuario**,
 quiero **poder comprar los productos seleccionados en el carrito**,  
 para **finalizar mi compra de manera rápida y segura**.
 
+## XIII. Newsletter.  
+Como **usuario**,  
+quiero **suscribirme a un newsletter**,  
+para **recibir información sobre novedades y promociones en mi correo electrónico**.  
+
+## XIV. Seguimiento de Envío.  
+Como **usuario**,  
+quiero **poder rastrear el estado de mi pedido**,  
+para **saber en qué etapa del proceso de envío se encuentra y cuándo llegará**.  
+
+## XV. Sistema de Envíos.  
+Como **usuario**,  
+quiero **seleccionar el método de envío que más me convenga**,  
+para **recibir mi pedido de manera rápida o económica según mi preferencia**.
+
+##  XVI. Ser Informado de Descuentos.  
+Como **usuario**,  
+quiero **recibir notificaciones sobre descuentos disponibles**,  
+para **aprovechar las promociones y ahorrar dinero**.  
+
+## XVII. Mostrar Sistema de Cupones.  
+Como **usuario**,  
+quiero **poder ingresar cupones de descuento durante el proceso de compra**,  
+para **aplicar promociones y reducir el costo total de mi pedido**.  
+
+## XVIII. Generación de Factura.  
+Como **usuario**,  
+quiero **recibir una factura detallada después de realizar mi compra**,  
+para **tener un comprobante oficial de mi transacción**.  
+
+## XIX. Método de Pago en Criptomonedas.  
+Como **usuario**,  
+quiero **poder pagar con criptomonedas**,  
+para **realizar transacciones seguras y rápidas sin necesidad de utilizar efectivo o tarjetas tradicionales**.  
+
+## XX. Método de Pago en Efectivo.  
+Como **usuario**,  
+quiero **tener la opción de pagar en efectivo al momento de recibir el pedido**,  
+para **no depender de métodos electrónicos de pago**.  
+
 ---
 
 ## Administrador
@@ -214,6 +254,30 @@ Como **administrador**,
 quiero **actualizar los productos**,  
 para **que la cantidad disponible refleje un stock real y evitar así errores en las compras**.
 
+### VII. Actualizar los productos.
+Como **administrador**,  
+quiero **registrar y gestionar las opciones de envío disponibles**,  
+para **ofrecer flexibilidad a los usuarios según su ubicación y necesidades**.  
+
+## VIII. Mostrar Sistema de Cupones.
+Como **administrador**,  
+quiero **gestionar y crear cupones de descuento**,  
+para **incentivar las ventas y fidelizar a los usuarios**.  
+
+## IX. Generación de Factura.
+Como **administrador**,  
+quiero **generar facturas automáticamente para cada compra**,  
+para **garantizar el cumplimiento de las normativas fiscales y ofrecer claridad a los usuarios**.  
+
+## X. Método de Pago en Criptomonedas.  
+Como **administrador**,  
+quiero **integrar un sistema para aceptar pagos en criptomonedas**,  
+para **diversificar las opciones de pago y atraer usuarios interesados en esta tecnología**.  
+
+## XI. Método de Pago en Efectivo. 
+Como **administrador**,  
+quiero **habilitar y gestionar la opción de pago en efectivo**,  
+para **cubrir las necesidades de los usuarios que prefieren este método**.  
 ---
 
 # Casos de Uso
@@ -289,6 +353,69 @@ para **que la cantidad disponible refleje un stock real y evitar así errores en
   3. El sistema procesa el pago.
   4. El sistema muestra un mensaje de confirmación de compra.
 
+### Caso de Uso 9: Suscribirse al Newsletter
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario tiene una cuenta registrada.
+- **Flujo Básico**:
+  1. El usuario selecciona la opción de suscribirse al newsletter.
+  2. El sistema solicita confirmar el correo registrado.
+  3. El usuario confirma la suscripción.
+  4. El sistema registra la suscripción y muestra un mensaje de confirmación.
+- **Flujos Alternativos**:
+  - Si el correo es inválido, el sistema muestra un mensaje de error.
+
+---
+
+### Caso de Uso 10: Rastrear envío
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario ha realizado una compra.
+- **Flujo Básico**:
+  1. El usuario accede a la sección de "Seguimiento de Envío".
+  2. El sistema solicita el número de pedido.
+  3. El usuario ingresa el número de pedido.
+  4. El sistema muestra el estado y ubicación del envío.
+- **Flujos Alternativos**:
+  - Si el número de pedido no es válido, el sistema muestra un mensaje de error.
+
+---
+
+### Caso de Uso 11: Usar cupones de descuento
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario tiene un cupón válido.
+- **Flujo Básico**:
+  1. El usuario ingresa un cupón durante el proceso de compra.
+  2. El sistema valida el cupón.
+  3. El sistema aplica el descuento al total.
+  4. El sistema actualiza el monto a pagar.
+- **Flujos Alternativos**:
+  - Si el cupón ha expirado o es inválido, el sistema muestra un mensaje de error.
+
+---
+
+### Caso de Uso 12: Generar factura
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario ha completado una compra.
+- **Flujo Básico**:
+  1. El sistema genera una factura al completar la compra.
+  2. El sistema envía la factura al correo del usuario.
+  3. El usuario puede descargar la factura desde su perfil.
+- **Flujos Alternativos**:
+  - Si ocurre un error en la generación de la factura, el sistema notifica al usuario.
+
+---
+
+### Caso de Uso 13: Seleccionar método de pago
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario está realizando una compra.
+- **Flujo Básico**:
+  1. El usuario selecciona un método de pago (efectivo o criptomonedas).
+  2. El sistema valida la disponibilidad del método elegido.
+  3. El sistema procesa el pago según la opción seleccionada.
+  4. El sistema confirma la transacción.
+- **Flujos Alternativos**:
+  - Si el pago no puede procesarse, el sistema notifica al usuario con un mensaje de error.
+
+
 ---
 
 ## Administrador
@@ -338,7 +465,31 @@ para **que la cantidad disponible refleje un stock real y evitar así errores en
   2. El administrador modifica la información del producto (precio, stock).
   3. El sistema actualiza el producto en la base de datos.
 
+### Caso de Uso 7: Crear cupones de descuento
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador accede a la sección "Administrar cupones".
+  2. El sistema muestra la lista de cupones existentes.
+  3. El administrador selecciona "Crear nuevo cupón".
+  4. El administrador ingresa los detalles del cupón (descuento, fecha de expiración).
+  5. El sistema registra el cupón y confirma su creación.
+- **Flujos Alternativos**:
+  - Si hay un error en los datos ingresados, el sistema notifica al administrador.
 
+---
+
+### Caso de Uso 8: Gestionar métodos de pago
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador accede a la sección "Métodos de pago".
+  2. El sistema muestra las opciones configuradas (efectivo, criptomonedas).
+  3. El administrador puede habilitar, deshabilitar o modificar un método de pago.
+  4. El sistema guarda los cambios y actualiza las opciones disponibles.
+- **Flujos Alternativos**:
+  - Si no se pueden guardar los cambios, el sistema muestra un mensaje de error.
+  
 ---
 
 ## Stack Tecnológico
@@ -350,7 +501,6 @@ para **que la cantidad disponible refleje un stock real y evitar así errores en
 - **Control de versiones:** Git y GitHub.
 
 ---
-
 
 ## Estructura del Proyecto
 
