@@ -36,11 +36,13 @@ Además, este proyecto representa una oportunidad para que el equipo adquiera ex
 - **Iván Popiel**  
 - **Nahuel Ramallo**
 
-
-
+--- 
 
 ## JIRA del proyecto
+
 [JIRA del proyecto](https://ezequiel-grisoski.atlassian.net/jira/software/projects/CAC/boards/3)
+
+---
 
 ## Objetivo del Proyecto
 
@@ -52,13 +54,17 @@ El proyecto también está diseñado para ser escalable, facilitando la integrac
 
 ---
 
-## Alcance
+# Alcance
 
 ### Para usuarios:
 1. Navegar listado de productos.
 2. Visualizar detalles de los productos, incluyendo descripción, precio y disponibilidad.
 3. Crear y gestionar un carrito de compras con opciones para agregar o quitar productos.
 4. Confirmar compras y recibir detalles de los productos seleccionados y el total.
+5. Los usuarios podrán registrarse en el sistema, iniciar sesión con su cuenta, y gestionar su sesión mientras realizan compras.
+6. Los usuarios podrán recuperar su contraseña si la olvidan.
+7. Los usuarios podrán confirmar su compra, ver el resumen de su carrito, y registrar su pedido en el sistema.
+
 
 ### Para administradores:
 1. Gestionar el inventario: alta, baja y actualización de productos.
@@ -67,13 +73,16 @@ El proyecto también está diseñado para ser escalable, facilitando la integrac
 
 ---
 
-## Límites del Sistema
+# Límites del Sistema
 
 ### Incluido:
 1. **Gestión de productos:** Alta, baja, modificación y consulta de productos disponibles en la base de datos.
 2. **Carrito de compras:** Funciones de agregar, eliminar productos y calcular totales en tiempo real.
 3. **Interfaz de usuario:** Página web que garantiza simplicidad y rapidez en las operaciones.
 4. **Seguridad básica:** Validación de formularios.
+5. **Login y Registro**: Permitir a los usuarios registrarse, iniciar sesión, y gestionar su sesión.
+6. **Checkout**: Permitir a los usuarios revisar el resumen del carrito y confirmar su compra.
+
 
 ### Excluido:
 1. Gestión de envíos: no incluye seguimiento ni cálculo de costos de envío.
@@ -99,10 +108,22 @@ El proyecto también está diseñado para ser escalable, facilitando la integrac
 - Actualizar el stock automáticamente al confirmar un pedido.
 - Registrar fecha y hora de los pedidos confirmados.
 
+### Login y Registro (Usuarios):
+- Los usuarios pueden registrarse proporcionando datos básicos como nombre, correo electrónico y contraseña.
+- Los usuarios pueden iniciar sesión con su correo y contraseña.
+- Los usuarios pueden cerrar sesión, y la sesión se mantendrá activa mientras navegan por el sistema, con su carrito de compras guardado.
+- Recuperación de contraseña para usuarios registrados.
+
+### Checkout (Usuarios):
+- El usuario debe poder ver un resumen de su carrito de compras antes de proceder al pago, incluyendo los productos seleccionados, las cantidades y el total.
+- El usuario puede confirmar el pedido, lo que actualiza el stock de productos y registra la transacción en la base de datos.
+- El sistema simula el proceso de pago (sin integración real de pasarela de pago) y confirma que el pago se realizó correctamente.
+
 ### Gestión de Productos (Administrador):
 - Agregar, modificar y eliminar productos del catálogo.
 - Editar la cantidad de stock.
 - Visualizar claramente los productos sin stock.
+
 
 ---
 
