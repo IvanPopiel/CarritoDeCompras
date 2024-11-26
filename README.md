@@ -180,42 +180,42 @@ Como **usuario**,
 quiero **poder comprar los productos seleccionados en el carrito**,  
 para **finalizar mi compra de manera rápida y segura**.
 
-## XIII. Newsletter.  
+### XIII. Newsletter.  
 Como **usuario**,  
 quiero **suscribirme a un newsletter**,  
 para **recibir información sobre novedades y promociones en mi correo electrónico**.  
 
-## XIV. Seguimiento de Envío.  
+### XIV. Seguimiento de Envío.  
 Como **usuario**,  
 quiero **poder rastrear el estado de mi pedido**,  
 para **saber en qué etapa del proceso de envío se encuentra y cuándo llegará**.  
 
-## XV. Sistema de Envíos.  
+### XV. Sistema de Envíos.  
 Como **usuario**,  
 quiero **seleccionar el método de envío que más me convenga**,  
 para **recibir mi pedido de manera rápida o económica según mi preferencia**.
 
-##  XVI. Ser Informado de Descuentos.  
+### XVI. Ser Informado de Descuentos.  
 Como **usuario**,  
 quiero **recibir notificaciones sobre descuentos disponibles**,  
 para **aprovechar las promociones y ahorrar dinero**.  
 
-## XVII. Mostrar Sistema de Cupones.  
+### XVII. Mostrar Sistema de Cupones.  
 Como **usuario**,  
 quiero **poder ingresar cupones de descuento durante el proceso de compra**,  
 para **aplicar promociones y reducir el costo total de mi pedido**.  
 
-## XVIII. Generación de Factura.  
+### XVIII. Generación de Factura.  
 Como **usuario**,  
 quiero **recibir una factura detallada después de realizar mi compra**,  
 para **tener un comprobante oficial de mi transacción**.  
 
-## XIX. Método de Pago en Criptomonedas.  
+### XIX. Método de Pago en Criptomonedas.  
 Como **usuario**,  
 quiero **poder pagar con criptomonedas**,  
 para **realizar transacciones seguras y rápidas sin necesidad de utilizar efectivo o tarjetas tradicionales**.  
 
-## XX. Método de Pago en Efectivo.  
+### XX. Método de Pago en Efectivo.  
 Como **usuario**,  
 quiero **tener la opción de pagar en efectivo al momento de recibir el pedido**,  
 para **no depender de métodos electrónicos de pago**.  
@@ -259,22 +259,22 @@ Como **administrador**,
 quiero **registrar y gestionar las opciones de envío disponibles**,  
 para **ofrecer flexibilidad a los usuarios según su ubicación y necesidades**.  
 
-## VIII. Mostrar Sistema de Cupones.
+### VIII. Mostrar Sistema de Cupones.
 Como **administrador**,  
 quiero **gestionar y crear cupones de descuento**,  
 para **incentivar las ventas y fidelizar a los usuarios**.  
 
-## IX. Generación de Factura.
+### IX. Generación de Factura.
 Como **administrador**,  
 quiero **generar facturas automáticamente para cada compra**,  
 para **garantizar el cumplimiento de las normativas fiscales y ofrecer claridad a los usuarios**.  
 
-## X. Método de Pago en Criptomonedas.  
+### X. Método de Pago en Criptomonedas.  
 Como **administrador**,  
 quiero **integrar un sistema para aceptar pagos en criptomonedas**,  
 para **diversificar las opciones de pago y atraer usuarios interesados en esta tecnología**.  
 
-## XI. Método de Pago en Efectivo. 
+### XI. Método de Pago en Efectivo. 
 Como **administrador**,  
 quiero **habilitar y gestionar la opción de pago en efectivo**,  
 para **cubrir las necesidades de los usuarios que prefieren este método**.  
@@ -831,9 +831,7 @@ erDiagram
 
 ---
 
-
 ## Diccionario de Datos
-
 
 
 ## Tabla: Producto
