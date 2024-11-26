@@ -120,47 +120,62 @@ El proyecto también está diseñado para ser escalable, facilitando la integrac
 
 ## Usuario
 
-### I. Ver productos
+### I. Registrar una cuenta.
+Como **usuario**,  
+quiero **poder registrar una cuenta**,  
+para **crear un perfil que me permita realizar compras en el sistema**.
+
+### II. Iniciar sesión.
+Como **usuario**,  
+quiero **poder iniciar sesión**,  
+para **acceder a mi cuenta y gestionar mi carrito de compras**.
+
+### III. Recuperar contraseña.
+Como **usuario**,  
+quiero **poder recuperar mi contraseña en caso de olvido**,  
+para **poder acceder sin problemas a mi cuenta**.
+
+### IV. Ver productos.
 Como **usuario**,  
 quiero **ver una lista de todos los productos de la tienda**,  
 para **elegir los productos que quiero comprar**.
 
-### II. Visualizar carrito
+### V. Visualizar carrito.
 Como **usuario**,  
 quiero **tener acceso al carrito**,  
 para **tener un control de los productos en los que estoy interesado**.
 
-### III. Visualizar stock
+### VI. Visualizar stock.
 Como **usuario**,  
 quiero **visualizar el stock en tiempo real**,  
 para **saber la cantidad de unidades disponibles que el sistema posee**.
 
-### IV. Agregar productos al carrito
+### VII. Agregar productos al carrito.
 Como **usuario**,  
 quiero **poder agregar productos al carrito**,  
 para **tener una lista de los productos que he seleccionado**.
 
-### V. Eliminar productos del carrito
+### VIII. Eliminar productos del carrito.
 Como **usuario**,  
 quiero **poder eliminar un producto especificado**,  
 para **regular mi selección antes de finalizar la compra**.
 
-### VI. Sumar productos desde el carrito
+### IX. Sumar productos desde el carrito.
 Como **usuario**,  
 quiero **poder aumentar un producto desde el carrito**,  
 para **ajustar las cantidades en base a mis intereses**.
 
-### VII. Restar productos del carrito
+### X. Restar productos del carrito.
 Como **usuario**,  
 quiero **reducir la cantidad de productos en mi carrito**,  
 para **ajustar las cantidades en base a mi presupuesto o necesidades**.
 
-### VIII. Vaciar el carrito
+### XI. Vaciar el carrito.
 Como **usuario**,  
 quiero **poder vaciar el carrito solo con un click**,  
 para **borrar todos los productos y así poder empezar de nuevo**.
 
-### IX. Comprar productos
+### XII. Comprar productos.
 Como **usuario**,  
 quiero **poder comprar los productos seleccionados en el carrito**,  
 para **finalizar mi compra de manera rápida y segura**.
@@ -169,25 +184,160 @@ para **finalizar mi compra de manera rápida y segura**.
 
 ## Administrador
 
-### I. Administrar productos
+### I. Actualizar los productos.
+Como **administrador**,  
+quiero **poder iniciar sesión en mi cuenta con rol admin**,  
+para **gestionar los productos, pedidos y el inventario**.
+
+### II. Ver historial de usuarios.
+Como **administrador**,  
+quiero **ver un historial de usuarios registrados**,  
+para **monitorear las cuentas creadas, y sus respectivas compras**.
+
+### III. Administrar productos.
 Como **administrador**,  
 quiero **poder gestionar la lista de productos en la tienda**,  
 para **mantener actualizada la oferta de productos disponibles para los usuarios**.
 
-### II. Agregar productos a la Base de datos
+### IV. Agregar productos a la Base de datos.
 Como **administrador**,  
 quiero **poder añadir nuevos productos a la base de datos**,  
 para **ampliar el catálogo y ofrecer más opciones**.
 
-### III. Eliminar productos de la Base de datos
+### V. Eliminar productos de la Base de datos.
 Como **administrador**,  
 quiero **poder eliminar productos de la base de datos**,  
 para **asegurar que solo los productos disponibles se puedan visualizar**.
 
-### IV. Actualizar los productos
+### VI. Actualizar los productos.
 Como **administrador**,  
 quiero **actualizar los productos**,  
 para **que la cantidad disponible refleje un stock real y evitar así errores en las compras**.
+
+---
+
+# Casos de Uso
+
+## Usuario
+
+### Caso de Uso 1: Registrar una cuenta
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario no tiene cuenta en el sistema.
+- **Flujo Básico**:
+  1. El usuario ingresa sus datos personales (nombre, email, contraseña).
+  2. El sistema valida los datos.
+  3. El sistema crea una cuenta para el usuario.
+  4. El sistema muestra un mensaje de confirmación.
+- **Flujos Alternativos**:
+  - Si los datos son incorrectos o incompletos, el sistema muestra un mensaje de error.
+
+### Caso de Uso 2: Iniciar sesión
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario tiene una cuenta registrada.
+- **Flujo Básico**:
+  1. El usuario ingresa su email y contraseña.
+  2. El sistema valida las credenciales.
+  3. El sistema muestra la página principal con acceso al carrito de compras.
+- **Flujos Alternativos**:
+  - Si las credenciales son incorrectas, el sistema muestra un mensaje de error.
+
+### Caso de Uso 3: Recuperar contraseña
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario ha olvidado su contraseña.
+- **Flujo Básico**:
+  1. El usuario selecciona la opción "Recuperar contraseña".
+  2. El sistema solicita al usuario su email.
+  3. El sistema envía un enlace para restablecer la contraseña al correo proporcionado.
+  4. El usuario accede al enlace y establece una nueva contraseña.
+  5. El sistema muestra un mensaje de confirmación.
+  
+### Caso de Uso 4: Ver productos
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario está autenticado.
+- **Flujo Básico**:
+  1. El usuario accede a la sección de productos.
+  2. El sistema muestra una lista de productos disponibles.
+  
+### Caso de Uso 5: Visualizar carrito
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario ha añadido productos al carrito.
+- **Flujo Básico**:
+  1. El usuario accede al carrito.
+  2. El sistema muestra los productos en el carrito con sus cantidades y precios.
+  
+### Caso de Uso 6: Agregar productos al carrito
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario está autenticado.
+- **Flujo Básico**:
+  1. El usuario selecciona un producto.
+  2. El usuario elige la cantidad y lo añade al carrito.
+  3. El sistema actualiza el carrito con el nuevo producto.
+  
+### Caso de Uso 7: Eliminar productos del carrito
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario tiene productos en el carrito.
+- **Flujo Básico**:
+  1. El usuario selecciona un producto para eliminar.
+  2. El sistema elimina el producto del carrito y actualiza la vista.
+  
+### Caso de Uso 8: Comprar productos
+- **Actor Principal**: Usuario
+- **Precondiciones**: El usuario tiene productos en su carrito.
+- **Flujo Básico**:
+  1. El usuario selecciona "Comprar".
+  2. El sistema valida la disponibilidad de los productos.
+  3. El sistema procesa el pago.
+  4. El sistema muestra un mensaje de confirmación de compra.
+
+---
+
+## Administrador
+
+### Caso de Uso 1: Iniciar sesión como administrador
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador tiene una cuenta registrada.
+- **Flujo Básico**:
+  1. El administrador ingresa sus credenciales (email y contraseña).
+  2. El sistema valida las credenciales y lo redirige al panel de administración.
+  
+### Caso de Uso 2: Ver historial de usuarios
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona "Historial de usuarios".
+  2. El sistema muestra una lista de usuarios registrados con sus detalles y compras realizadas.
+  
+### Caso de Uso 3: Administrar productos
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona "Administrar productos".
+  2. El sistema muestra la lista de productos disponibles en el sistema.
+  3. El administrador puede añadir, eliminar o modificar productos.
+  
+### Caso de Uso 4: Agregar productos
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona "Añadir producto".
+  2. El administrador ingresa los detalles del producto (nombre, descripción, precio, stock).
+  3. El sistema agrega el producto a la base de datos.
+  
+### Caso de Uso 5: Eliminar productos
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona un producto para eliminar.
+  2. El sistema elimina el producto de la base de datos.
+  
+### Caso de Uso 6: Actualizar productos
+- **Actor Principal**: Administrador
+- **Precondiciones**: El administrador está autenticado.
+- **Flujo Básico**:
+  1. El administrador selecciona un producto para actualizar.
+  2. El administrador modifica la información del producto (precio, stock).
+  3. El sistema actualiza el producto en la base de datos.
+
 
 ---
 
@@ -204,6 +354,44 @@ para **que la cantidad disponible refleje un stock real y evitar así errores en
 
 ## Estructura del Proyecto
 
+- migrations/
+  - Contiene las migraciones generadas por Django para gestionar los cambios en la base de datos.
+
+- static/
+  - Contiene archivos estáticos (CSS, imágenes y JavaScript).
+  - **css/**: Archivos CSS.
+  - **img/**: Imágenes utilizadas en el proyecto.
+  - **js/**: Archivos JavaScript.
+
+- templates/
+  - Contiene las plantillas HTML que renderiza el servidor.
+  - **auth/**
+    - **login.html**: Página para iniciar sesión de los usuarios.
+    - **register.html**: Página para el registro de nuevos usuarios.
+  - **carritoVista.html**: Vista que muestra el contenido del carrito de compras.
+  - **checkout.html**: Vista para procesar el pago y finalizar la compra.
+  - **index.html**: Página de inicio del sitio web.
+
+- carrito.py
+  - Archivos relacionados con la lógica del carrito de compras.
+
+- admin.py
+  - Configuración para la administración del sitio web a través del panel de administración de Django.
+
+- apps.py
+  - Configuración de la aplicación de Django.
+
+- context_processor.py
+  - Contiene funciones para añadir datos al contexto de las vistas (por ejemplo, el carrito de compras en cada vista).
+
+- models.py
+  - Define los modelos de la base de datos (por ejemplo, Producto, Cliente, Carrito, etc.).
+
+- tests.py
+  - Contiene pruebas unitarias y de integración para garantizar que el sistema funcione correctamente.
+
+- views.py
+  - Define las vistas que manejan las solicitudes HTTP y renderizan las plantillas correspondientes.
 
 
 
@@ -316,6 +504,27 @@ classDiagram
 
 ```mermaid
 
+sequenceDiagram
+    actor Cliente
+    participant Carrito
+    participant Producto
+    participant ProcesadorPagos
+    participant Factura
+
+    Cliente ->> Producto: Seleccionar producto
+    Producto ->> Producto: Verificar stock
+    Producto -->> Cliente: Confirmar disponibilidad
+    Cliente ->> Carrito: Agregar producto al carrito
+    Carrito ->> Producto: Validar existencia
+    Producto -->> Carrito: Confirmar producto agregado
+    Cliente ->> Carrito: Realizar compra
+    Carrito ->> ProcesadorPagos: Procesar pago
+    ProcesadorPagos -->> Carrito: Confirmar pago exitoso
+    Carrito ->> Factura: Solicitar generación de factura
+    Factura -->> Cliente: Enviar factura
+
+
+
 ```
 
 
@@ -375,10 +584,216 @@ class ProcesadorPagosTestCase(TestCase):
 ## Diagrama Entidad-Relación (DER)
 
 ```mermaid
+erDiagram
+    Producto {
+        int idProducto PK
+        string nombre
+        string descripcion
+        float precio
+        int stock
+    }
 
+    Persona {
+        int idPersona PK
+        string nombre
+        string email
+        string telefono
+    }
+
+    Cliente {
+        int idCliente PK, FK
+        string direccion
+    }
+
+    Administrador {
+        int idAdmin PK, FK
+        string nivel
+    }
+
+    User {
+        int idUser PK
+        string username
+        string password
+        int idPersona FK
+    }
+
+    Carrito {
+        int idCarrito PK
+        int idCliente FK
+    }
+
+    Carrito_Producto {
+        int idCarrito FK
+        int idProducto FK
+        int cantidad
+    }
+
+    Factura {
+        int idFactura PK
+        int idCompra FK
+        int idCliente FK
+        DateTime fecha
+        float total
+    }
+
+    MetodoPago {
+        int idMetodoPago PK
+        float monto
+    }
+
+    Efectivo {
+        int idMetodoPago FK
+        float monto_recibido
+    }
+
+    BilleteraVirtual {
+        int idMetodoPago FK
+        string cuenta
+    }
+
+    Criptomonedas {
+        int idMetodoPago FK
+        string wallet
+        string moneda
+    }
+
+    TarjetaCredito {
+        int idMetodoPago FK
+        string numeroTarjeta
+        string titular
+        DateTime fechaExpiracion
+    }
+
+    %% Relaciones entre entidades
+    Persona ||--o{ Cliente : "es"
+    Persona ||--o{ Administrador : "es"
+    Persona ||--|| User : "se asocia con"
+    Cliente ||--|| Carrito : "tiene"
+    Carrito }o--o{ Producto : "contiene"
+    Carrito ||--o{ Carrito_Producto : ""
+    Producto ||--o{ Carrito_Producto : ""
+    Factura ||--|| Cliente : "pertenece a"
+    MetodoPago ||--o| Efectivo : "es un"
+    MetodoPago ||--o| BilleteraVirtual : "es un"
+    MetodoPago ||--o| Criptomonedas : "es un"
+    MetodoPago ||--o| TarjetaCredito : "es un"
 ```
 
 ---
 
 
 ## Diccionario de Datos
+
+
+
+## Tabla: Producto
+| Campo         | Descripción                      | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|----------------------------------|---------------|--------|----------------|
+| `idProducto`  | Identificador único del producto | INT           | -      | PK, NOT NULL   |
+| `nombre`      | Nombre del producto             | VARCHAR       | 100    | NOT NULL       |
+| `descripcion` | Descripción del producto        | TEXT          | -      | NULLABLE       |
+| `precio`      | Precio del producto             | FLOAT         | -      | NOT NULL       |
+| `stock`       | Cantidad disponible             | INT           | -      | Default: 0     |
+
+---
+
+## Tabla: Persona
+| Campo         | Descripción                           | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|---------------------------------------|---------------|--------|----------------|
+| `idPersona`   | Identificador único de la persona     | INT           | -      | PK, NOT NULL   |
+| `nombre`      | Nombre completo de la persona         | VARCHAR       | 100    | NOT NULL       |
+| `email`       | Correo electrónico de la persona      | VARCHAR       | 100    | UNIQUE, NOT NULL |
+| `telefono`    | Número de teléfono de la persona      | VARCHAR       | 15     | NULLABLE       |
+
+---
+
+## Tabla: Cliente
+| Campo         | Descripción                           | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|---------------------------------------|---------------|--------|----------------|
+| `idCliente`   | Identificador único del cliente       | INT           | -      | PK, FK (Persona.idPersona), NOT NULL |
+| `direccion`   | Dirección del cliente                | VARCHAR       | 255    | NULLABLE       |
+
+---
+
+## Tabla: Administrador
+| Campo         | Descripción                           | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|---------------------------------------|---------------|--------|----------------|
+| `idAdmin`     | Identificador único del administrador | INT           | -      | PK, FK (Persona.idPersona), NOT NULL |
+| `nivel`       | Nivel del administrador               | VARCHAR       | 50     | NOT NULL       |
+
+---
+
+## Tabla: User
+| Campo         | Descripción                           | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|---------------------------------------|---------------|--------|----------------|
+| `idUser`      | Identificador único del usuario       | INT           | -      | PK, NOT NULL   |
+| `username`    | Nombre de usuario                    | VARCHAR       | 50     | UNIQUE, NOT NULL |
+| `password`    | Contraseña del usuario               | VARCHAR       | 255    | NOT NULL       |
+| `idPersona`   | Identificador asociado a una persona | INT           | -      | FK (Persona.idPersona), NOT NULL |
+
+---
+
+## Tabla: Carrito
+| Campo          | Descripción                                | Tipo de Dato  | Tamaño | Restricciones |
+|-----------------|--------------------------------------------|---------------|--------|---------------|
+| `idCarrito`     | Identificador único del carrito            | INT           | -      | PK, NOT NULL  |
+| `idCliente`     | Identificador del cliente asociado         | INT           | -      | FK (Cliente.idCliente), NOT NULL  |
+
+---
+
+## Tabla: Carrito_Producto
+| Campo         | Descripción                                     | Tipo de Dato  | Tamaño | Restricciones |
+|---------------|-------------------------------------------------|---------------|--------|---------------|
+| `idCarrito`   | Identificador del carrito                       | INT           | -      | FK (Carrito.idCarrito), NOT NULL  |
+| `idProducto`  | Identificador del producto                      | INT           | -      | FK (Producto.idProducto), NOT NULL  |
+| `cantidad`    | Cantidad del producto en el carrito             | INT           | -      | Default: 1    |
+
+---
+
+## Tabla: Factura
+| Campo         | Descripción                          | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|--------------------------------------|---------------|--------|----------------|
+| `idFactura`   | Identificador único de la factura    | INT           | -      | PK, NOT NULL   |
+| `idCompra`    | Identificador de la compra asociada  | INT           | -      | FK, NOT NULL   |
+| `idCliente`   | Identificador del cliente asociado   | INT           | -      | FK, NOT NULL   |
+| `fecha`       | Fecha de emisión de la factura       | DATETIME      | -      | NOT NULL       |
+| `total`       | Total de la factura                 | FLOAT         | -      | NOT NULL       |
+
+---
+
+## Tabla: MetodoPago
+| Campo         | Descripción                          | Tipo de Dato  | Tamaño | Restricciones  |
+|---------------|--------------------------------------|---------------|--------|----------------|
+| `idMetodoPago`| Identificador único del método pago  | INT           | -      | PK, NOT NULL   |
+| `monto`       | Monto del pago                      | FLOAT         | -      | NOT NULL       |
+
+---
+
+### Subtipos de MetodoPago
+
+#### **Efectivo**
+| Campo              | Descripción                   | Tipo de Dato  | Tamaño | Restricciones  |
+|--------------------|-------------------------------|---------------|--------|----------------|
+| `idMetodoPago`     | Identificador del método pago | INT           | -      | FK, NOT NULL   |
+| `monto_recibido`   | Monto recibido               | FLOAT         | -      | NOT NULL       |
+
+#### **BilleteraVirtual**
+| Campo              | Descripción                   | Tipo de Dato  | Tamaño | Restricciones  |
+|--------------------|-------------------------------|---------------|--------|----------------|
+| `idMetodoPago`     | Identificador del método pago | INT           | -      | FK, NOT NULL   |
+| `cuenta`           | Cuenta de la billetera        | VARCHAR       | 100    | NOT NULL       |
+
+#### **Criptomonedas**
+| Campo              | Descripción                   | Tipo de Dato  | Tamaño | Restricciones  |
+|--------------------|-------------------------------|---------------|--------|----------------|
+| `idMetodoPago`     | Identificador del método pago | INT           | -      | FK, NOT NULL   |
+| `wallet`           | Dirección del monedero        | VARCHAR       | 100    | NOT NULL       |
+| `moneda`           | Tipo de criptomoneda          | VARCHAR       | 50     | NOT NULL       |
+
+#### **TarjetaCredito**
+| Campo              | Descripción                   | Tipo de Dato  | Tamaño | Restricciones  |
+|--------------------|-------------------------------|---------------|--------|----------------|
+| `idMetodoPago`     | Identificador del método pago | INT           | -      | FK, NOT NULL   |
+| `numeroTarjeta`    | Número de la tarjeta          | VARCHAR       | 16     | NOT NULL       |
+| `titular`          | Titular de la tarjeta         | VARCHAR       | 100    | NOT NULL       |
+| `fechaExpiracion`  | Fecha de expiración           | DATETIME      | -      | NOT NULL       |
