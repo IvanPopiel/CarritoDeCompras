@@ -29,12 +29,19 @@ body {
     font-weight: bold;
 }
 
+.container-nav{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
 /* Estilo para el contenedor del icono */
 .container-icono-carrito {
     width: 40px; /* Tamaño del contenedor */
     height: 40px;
-    display: block;
-    margin: 20px auto;
+    display: inline;
+    margin: 20px 0;
 }
 
 /* Estilo inicial para el icono */
@@ -43,6 +50,54 @@ body {
     height: 100%; /* Asegura que la imagen ocupe el 100% del contenedor */
     object-fit: contain;
     transition: transform 1s ease; /* Transición suave de 1 segundo */
+}
+
+.btn-login {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the text */
+    font-size: 16px; /* Font size */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color change on hover */
+    margin-top: 25px;
+}
+
+.btn-login:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.auth-links{
+    margin-bottom: 10px;
+}
+
+.btn-logout{
+    background-color: red; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the text */
+    font-size: 16px; /* Font size */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color change on hover */
+    margin-top: 5px;
+}
+
+.btn-register {
+    background-color: #4CAF50; /* Blue background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the text */
+    font-size: 16px; /* Font size */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color change on hover */
+    margin-top: 25px;
+}
+
+.btn-register:hover {
+    background-color: #007B9A; /* Slightly darker blue on hover */
 }
 
 /* Clase que se añadirá cuando el carrito se haya clickeado (para rotar) */
