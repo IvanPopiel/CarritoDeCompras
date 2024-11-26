@@ -4,32 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        h3 {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Proceso de pago</h1>
-    <p>Total a pagar: {{ total }}</p>
-    
-    <h3>Elige un método de pago:</h3>
-    <form action="{% url 'ProcesarPago' %}" method="post">
-        {% csrf_token %}
+    <div class="container">
+        <h1>Proceso de pago</h1>
+        <p>Total a pagar: <strong>${{ total }}</strong></p>
         
-        <label for="efectivo">
-            <input type="radio" name="metodo_pago" id="efectivo" value="efectivo"> Efectivo
-        </label><br>
-        
-        <label for="billetera">
-            <input type="radio" name="metodo_pago" id="billetera" value="billetera"> Billetera Virtual
-        </label><br>
-        
-        <label for="tarjeta">
-            <input type="radio" name="metodo_pago" id="tarjeta" value="tarjeta"> Tarjeta de Crédito
-        </label><br>
-        
-        <label for="criptomonedas">
-            <input type="radio" name="metodo_pago" id="criptomonedas" value="criptomonedas"> Criptomonedas
-        </label><br>
-        
-        <button type="submit">Pagar</button>
-    </form>
+        <h3>Elige un método de pago:</h3>
+        <form action="{% url 'ProcesarPago' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="efectivo">
+                    <input type="radio" name="metodo_pago" id="efectivo" value="efectivo"> Efectivo
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <label for="billetera">
+                    <input type="radio" name="metodo_pago" id="billetera" value="billetera"> Billetera Virtual
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <label for="tarjeta">
+                    <input type="radio" name="metodo_pago" id="tarjeta" value="tarjeta"> Tarjeta de Crédito
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <label for="criptomonedas">
+                    <input type="radio" name="metodo_pago" id="criptomonedas" value="criptomonedas"> Criptomonedas
+                </label>
+            </div>
+            
+            <button type="submit">Pagar</button>
+        </form>
+    </div>
 </body>
 </html>
