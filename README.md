@@ -386,8 +386,6 @@ para **cubrir las necesidades de los usuarios que prefieren este método**.
 - **Flujos Alternativos**:
   - Si el correo es inválido, el sistema muestra un mensaje de error.
 
----
-
 ### Caso de Uso 10: Rastrear envío
 - **Actor Principal**: Usuario
 - **Precondiciones**: El usuario ha realizado una compra.
@@ -398,8 +396,6 @@ para **cubrir las necesidades de los usuarios que prefieren este método**.
   4. El sistema muestra el estado y ubicación del envío.
 - **Flujos Alternativos**:
   - Si el número de pedido no es válido, el sistema muestra un mensaje de error.
-
----
 
 ### Caso de Uso 11: Usar cupones de descuento
 - **Actor Principal**: Usuario
@@ -412,8 +408,6 @@ para **cubrir las necesidades de los usuarios que prefieren este método**.
 - **Flujos Alternativos**:
   - Si el cupón ha expirado o es inválido, el sistema muestra un mensaje de error.
 
----
-
 ### Caso de Uso 12: Generar factura
 - **Actor Principal**: Usuario
 - **Precondiciones**: El usuario ha completado una compra.
@@ -423,8 +417,6 @@ para **cubrir las necesidades de los usuarios que prefieren este método**.
   3. El usuario puede descargar la factura desde su perfil.
 - **Flujos Alternativos**:
   - Si ocurre un error en la generación de la factura, el sistema notifica al usuario.
-
----
 
 ### Caso de Uso 13: Seleccionar método de pago
 - **Actor Principal**: Usuario
@@ -436,7 +428,6 @@ para **cubrir las necesidades de los usuarios que prefieren este método**.
   4. El sistema confirma la transacción.
 - **Flujos Alternativos**:
   - Si el pago no puede procesarse, el sistema notifica al usuario con un mensaje de error.
-
 
 ---
 
@@ -498,8 +489,6 @@ para **cubrir las necesidades de los usuarios que prefieren este método**.
   5. El sistema registra el cupón y confirma su creación.
 - **Flujos Alternativos**:
   - Si hay un error en los datos ingresados, el sistema notifica al administrador.
-
----
 
 ### Caso de Uso 8: Gestionar métodos de pago
 - **Actor Principal**: Administrador
